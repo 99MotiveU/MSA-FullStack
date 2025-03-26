@@ -21,11 +21,11 @@ public class BankMain {
                     break;
                 case '1': // 계좌 개설
                 	System.out.println("계좌를 개설합니다.");
-                    Bank.createacc();
-                    break;
+                   	Bank.createacc();
+                    	break;
                 case '2': // 잔액 확인
-                    Bank.checkBalance();
-                    break;
+			Bank.checkBalance();
+                 	break;
                 case '3': // 입금
                 	Bank.deposit();
                 	break;
