@@ -1,95 +1,91 @@
 package com.pm;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Properties;
 import java.util.Scanner;
 
 public class Ex03 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String url = "jdbc:oracle:thin:@localhost:1521:xe";
+        Properties props = new Properties();
+        props.setProperty("user", "scott");
+        props.setProperty("password", "tiger");
 
-	public static void main(String[] args) throws Exception {
-		// «–ª˝º∫¿˚∞¸∏Æ «¡∑Œ±◊∑•(ver 0.20.0)
-		/*
-		 * 1.∫∏±‚ 2.¿‘∑¬ 3.ºˆ¡§ 4.ªË¡¶ 0.¡æ∑·>
-		 */
-		Scanner sc = new Scanner(System.in);
-		String url = "jdbc:oracle:thin:@localhost:1521:xe";
-		Properties props = new Properties();
-		props.setProperty("user", "scott");
-		props.setProperty("password", "tiger");
+        Connection conn = null;
+        Statement stmt = null;
+        ResultSet rs = null;
 
-		Connection conn = null;
-		Statement stmt = null;
-		java.sql.ResultSet rs = null;
+        System.out.println("ÌïôÏÉùÏÑ±Ï†ÅÍ¥ÄÎ¶¨ ÌîÑÎ°úÍ∑∏Îû® (ver 0.20.0)");
+        boolean boo = true;
+        while (boo) {
+            System.out.print("1.Î≥¥Í∏∞ 2.ÏûÖÎ†• 0.Ï¢ÖÎ£å> ");
+            int choice = sc.nextInt();
+            switch (choice) {
+                case 0:
+                    System.out.println("ÌîÑÎ°úÍ∑∏Îû®ÏùÑ Ï¢ÖÎ£åÌï©ÎãàÎã§. Ïù¥Ïö©Ìï¥Ï£ºÏÖîÏÑú Í∞êÏÇ¨Ìï©ÎãàÎã§.");
+                    boo = false;
+                    break;
+                case 1:
+                    try {
+                        Class.forName("oracle.jdbc.driver.OracleDriver");
+                        conn = DriverManager.getConnection(url, props);
+                        stmt = conn.createStatement();
+                        rs = stmt.executeQuery("SELECT * FROM student_scores");
 
-		int kor = 0;
-		int eng = 0;
-		int math = 0;
-		int tot = kor + eng + math;
-		double avg = Math.round(tot/3.0*100)/100;
-		System.out.println("«–ª˝º∫¿˚∞¸∏Æ «¡∑Œ±◊∑• (ver 0.20.0)");
-		int choice = -1;
-		boolean boo = true;
-		while (boo) {
-			System.out.print("1.∫∏±‚ 2.¿‘∑¬ 3.ºˆ¡§ 4.ªË¡¶ 0.¡æ∑·> ");
-			choice = sc.nextInt();
-			switch (choice) {
-			case 0: // ¡æ∑·
-				System.out.println("«¡∑Œ±◊∑•¿ª ¡æ∑·«’¥œ¥Ÿ. \t ¿ÃøÎ«ÿ¡÷º≈º≠ ∞®ªÁ«’¥œ¥Ÿ.");
-				boo = false;
-				sc.close();
-				break;
-			case 1: // ∫∏±‚
+                        System.out.println("ID\tÍµ≠Ïñ¥\tÏòÅÏñ¥\tÏàòÌïô\tÏ¥ùÏ†ê\tÌèâÍ∑†");
+                        while (rs.next()) {
+                            System.out.print(rs.getInt("id") + "\t");
+                            System.out.print(rs.getInt("kor") + "\t");
+                            System.out.print(rs.getInt("eng") + "\t");
+                            System.out.print(rs.getInt("math") + "\t");
+                            System.out.print(rs.getInt("tot") + "\t");
+                            System.out.println(rs.getDouble("avg"));
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        try {
+                            if (rs != null) rs.close();
+                            if (stmt != null) stmt.close();
+                            if (conn != null) conn.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    break;
+                case 2:
+                    System.out.println("ÌïôÏÉù ÏÑ±Ï†ÅÏùÑ ÏûÖÎ†•ÌïòÏÑ∏Ïöî");
+                    System.out.print("Íµ≠Ïñ¥> ");
+                    int kor = sc.nextInt();
+                    System.out.print("ÏòÅÏñ¥> ");
+                    int eng = sc.nextInt();
+                    System.out.print("ÏàòÌïô> ");
+                    int math = sc.nextInt();
 
-				break;
-			case 2: // ¿‘∑¬
-				System.out.println("«–ª˝ º∫¿˚¿ª ¿‘∑¬«œººø‰");
-				System.out.print("±πæÓ> ");
-				kor = sc.nextInt();
-				System.out.print("øµæÓ> ");
-				eng = sc.nextInt();
-				System.out.print("ºˆ«–> ");
-				math =sc.nextInt();	
-				
+                    int tot = kor + eng + math;
+                    double avg = Math.round((tot / 3.0) * 100) / 100.0;
 
-				String sql = "";
-				try {
-					Class.forName("oracle.jdbc.driver.OracleDriver");
-					conn = DriverManager.getConnection(url, props);
-					stmt = conn.createStatement();
-
-					while (rs.next()) {
-						System.out.print(rs.getObject(1) + "\t");
-						System.out.print(rs.getObject(2) + "\t");
-						System.out.println(rs.getObject(3));
-					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				} catch (ClassNotFoundException e) {
-					e.printStackTrace();
-				} finally {
-					try {
-						if (rs != null)
-							rs.close();
-						if (stmt != null)
-							stmt.close();
-						if (conn != null)
-							conn.close();
-					} catch (SQLException e) {
-						e.printStackTrace();
-					}
-				}
-
-				break;
-			case 3: // ºˆ¡§
-				break;
-			case 4: // ªË¡¶
-				break;
-			}
-		}
-
-	}
-
+                    try {
+                        Class.forName("oracle.jdbc.driver.OracleDriver");
+                        conn = DriverManager.getConnection(url, props);
+                        stmt = conn.createStatement();
+                        String sql = "INSERT INTO student_scores (kor, eng, math, tot, avg) VALUES (" + kor + ", " + eng + ", " + math + ", " + tot + ", " + avg + ")";
+                        stmt.executeUpdate(sql);
+                        System.out.println("ÏÑ±Ï†ÅÏù¥ Ï†ÄÏû•ÎêòÏóàÏäµÎãàÎã§.");
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    } finally {
+                        try {
+                            if (stmt != null) stmt.close();
+                            if (conn != null) conn.close();
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                    break;
+            }
+        }
+        sc.close();
+    }
 }
