@@ -1,0 +1,27 @@
+mysql > bin
+mysqld --initialize --datadir=../data --console
+	 ~~~~root@localhost: Qipor#)k%6lv
+	or (mysqld  --initialize-insecure --datadir=../data --console)	 
+	 
+mysqld --port=3306 --datadir=../data --console
+
+ALTER user 'root'@'localhost' IDENTIFIED BY '1234';
+show databases;
+create database xe;
+use xe;
+
+
+----------------------------------
+sudo apt update
+wget https://downloads.mysql.com/archives/get/p/23/file/mysql-9.2.0-linux-glibc2.17-x86_64-minimal.tar.xz
+tar Jxvf mysql-9.2.0-linux-glibc2.17-x86_64-minimal.tar.xz
+mv mysql-9.2.0-linux-glibc2.17-x86_64-minimal mysql9.2
+cd mysql9.2/bin
+#./mysqld  --initialize-insecure --datadir=../data --console
+mv /vagrant/data ../data
+./mysqld --port=3306 --datadir=../data &
+
+./mysql -u root -p
+
+
+
