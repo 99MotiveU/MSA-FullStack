@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <style rel="stylesheet" type="text/css">
+        h1{
+            color:blue;
+        }
+    </style> -->
+    <!-- <link rel="stylesheet" type="text/css" href="test05.css"> -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+-->
+<style rel="stylesheet" type="text/css">
+    h2{
+        background-color: aqua;
+    }
+</style>
+<style rel="stylesheet" type="text/css">
+    #h1,#p1{
+        color:red;
+    }
+</style>
+<style rel="stylesheet" type="text/css">
+    #cl1{
+        color:yellow;
+    }
+</style>
+<style rel="stylesheet" type="text/css">
+    #cl1{
+        color:red;
+    }
+    #id01{
+        color:blue;
+    }
+    h2{
+        color:green;
+    }
+</style>
+<style rel="stylesheet" type="text/css">
+    /* 
+    , 다중 선택
+    + 다음 엘리먼트
+    ~ 다음에 등장하는 모든 엘리먼트들
+    > 자식 엘리먼트
+      자식 및 자손 엘리먼트(띄어쓰기)
+    기본적으로 속성은 자식에 전파
+    */
+    h1+div{
+        color:red;
+    }
+    h1+div>div{
+        color:blue;
+    }
+    h1+div div{
+        color:green;
+    }
+    h2:nth-child(1){
+        color:red;
+    }
+</style>
+</head> 
+<body>
+    <h1>css</h1>
+    <p id="p1">화면 디자인</p>
+    <h2>css 문법</h2>
+    <img src="https://www.w3schools.com/css/img_selector.gif"/>
+
+    <h2 style="color:aqua" id="id01" class  ="cl1">인라인 방식</h2>
+    <p class="cl1">태그에 직접적으로 sytle속성을 통해 적용</p>
+    <p class="cl1">ex h1 style="color:red"</p>
+
+    <h2>css 문서정의</h2>
+    <p>head의 style태그를 통해 정의의</p>
+    <p>ex head->style->선택자{속성명:속성값;}</p>
+
+    <h2>css 파일정의</h2>
+    <p>css파일을 만들고 불러오는 방법법</p>
+    <p>ex head->link->href속성으로 파일 로딩</p>
+
+    <h2>선택자</h2>
+    <p>우선순위: 인라인 방식 > 아이디 선택자 > 클래스 선택자 > 태그 선택자</p>
+
+    <h2>선택자</h2>
+    <p>동일 선택자의 경우는 가장 마지막 적용한 속성 적용</p>
+    <p>우선순위: 인라인 > 아이디 선택자 > 클래스 선택자 > 태그 선택자</p>
+
+    <h3>아이디 선택자</h3>
+    <p>문서에서 유일한 하나의 아이디를 갖는 엘리먼트에 적용</p>
+
+    <h3>클래스 선택자</h3>
+    <p>문서의 동일한 클래스에 모두 적용</p>
+
+    <h3>태그 선택자</h3>
+    <p>문서의 모든 태그에 적용</p>
+</body>
+</html>

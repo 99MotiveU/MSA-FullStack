@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        [type='text']{
+            background-color: red;
+        }
+        [type="password"]{
+            background-color: blue;
+        }
+        [type*='e']{
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <h1>form tag</h1>
+    <form action="ex01.html">
+        <div>
+            <label for="id01">title</label>
+            <input type="text" name="title" id="id01"/>
+        </div>
+        <div>
+            <label>2</label>
+            <input type="password" name="pw"/>
+        </div>
+        <div>
+            <label>date</label>
+            <input type="date" name="d1"/>
+        </div>
+        <div>
+            <label>time</label>
+            <input type="time" name="d2"/>
+        </div>
+        <div>
+            <label>time</label>
+            <input type="datetime-local" name="d3"/>
+        </div>
+        <div>
+            <label>url</label>
+            <input type="url" name="url"/>
+        </div>
+        <div>
+            <label>email</label>
+            <input type="email" name="email"/>
+        </div>
+        <div>
+            <label>phone</label>
+            <input type="tel" name="phone"/>
+        </div>
+        <div>
+            <label>num</label>
+            <input type="number" name="num" value="5"/>
+        </div>
+        <div>
+            <label>ran</label>
+            <input type="range" name="ran" value="5" min="1" max="10"/>
+        </div>
+        <div>
+            <label>title</label>
+            <input type="text" name="title"/>
+        </div>
+
+        <div>
+            <input type="submit" value="전송"/>
+            <button>btn1</button>
+            <button type="submit">btn3</button>
+            <button type="button">btn4</button>
+        </div>
+    </form>
+    <button>btn2</button>
+</body>
+</html>
