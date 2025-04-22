@@ -1,0 +1,70 @@
+@media screen and (min-width:601px){
+    .container{width: 1200px;margin: 0px auto;}
+            .container>.row{clear: both;}
+            .container>.row>.grid1,.container>.row>.grid2,
+            .container>.row>.grid3,.container>.row>.grid4,
+            .container>.row>.grid5,.container>.row>.grid6,
+            .container>.row>.grid7,.container>.row>.grid8,
+            .container>.row>.grid9,.container>.row>.grid10,
+            .container>.row>.grid11,.container>.row>.grid12
+            {float: left;}
+    
+            .container>.row>.grid1{width: 100px;}
+            .container>.row>.grid2{width: 200px;}
+            .container>.row>.grid3{width: 300px;}
+            .container>.row>.grid4{width: 400px;}
+            .container>.row>.grid5{width: 500px;}
+            .container>.row>.grid6{width: 600px;}
+            .container>.row>.grid7{width: 700px;}
+            .container>.row>.grid8{width: 800px;}
+            .container>.row>.grid9{width: 900px;}
+            .container>.row>.grid10{width: 1000px;}
+            .container>.row>.grid11{width: 1100px;}
+            .container>.row>.grid12{width: 1200px;}
+    .containerw{width: 100%;margin: 0px auto;}
+            .containerw>.row{clear: both;}
+            .containerw>.row>.grid1,.containerw>.row>.grid2,
+            .containerw>.row>.grid3,.containerw>.row>.grid4,
+            .containerw>.row>.grid5,.containerw>.row>.grid6,
+            .containerw>.row>.grid7,.containerw>.row>.grid8,
+            .containerw>.row>.grid9,.containerw>.row>.grid10,
+            .containerw>.row>.grid11,.containerw>.row>.grid12
+            {float: left;background-color: aqua;}
+    
+            .containerw>.row>.grid1{width: 8.33%;}
+            .containerw>.row>.grid2{width: 16.66%;}
+            .containerw>.row>.grid3{width: 25%;}
+            .containerw>.row>.grid4{width: 33.33%;}
+            .containerw>.row>.grid5{width: 41.66%;}
+            .containerw>.row>.grid6{width: 50%;}
+            .containerw>.row>.grid7{width: 58.33%;}
+            .containerw>.row>.grid8{width: 66.66%;}
+            .containerw>.row>.grid9{width: 75%;}
+            .containerw>.row>.grid10{width: 83.33%;}
+            .containerw>.row>.grid11{width: 91.66%;}
+            .containerw>.row>.grid12{width: 100%;}
+    }
+    @media screen and (max-width:600px){
+        .containerw{width: 100%;margin: 0px auto;}
+        .containerw>.row{clear: both;}
+        .containerw>.row>.mgrid1,.containerw>.row>.mgrid2,
+        .containerw>.row>.mgrid3,.containerw>.row>.mgrid4,
+        .containerw>.row>.mgrid5,.containerw>.row>.mgrid6,
+        .containerw>.row>.mgrid7,.containerw>.row>.mgrid8,
+        .containerw>.row>.mgrid9,.containerw>.row>.mgrid10,
+        .containerw>.row>.mgrid11,.containerw>.row>.mgrid12
+        {float: left;background-color: aqua;}
+    
+        .containerw>.row>.mgrid1{width: 8.33%;}
+        .containerw>.row>.mgrid2{width: 16.66%;}
+        .containerw>.row>.mgrid3{width: 25%;}
+        .containerw>.row>.mgrid4{width: 33.33%;}
+        .containerw>.row>.mgrid5{width: 41.66%;}
+        .containerw>.row>.mgrid6{width: 50%;}
+        .containerw>.row>.mgrid7{width: 58.33%;}
+        .containerw>.row>.mgrid8{width: 66.66%;}
+        .containerw>.row>.mgrid9{width: 75%;}
+        .containerw>.row>.mgrid10{width: 83.33%;}
+        .containerw>.row>.mgrid11{width: 91.66%;}
+        .containerw>.row>.mgrid12{width: 100%;}
+    }
