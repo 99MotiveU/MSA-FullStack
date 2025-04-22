@@ -21,7 +21,6 @@ public class Ex02 {
 		String input=null;
 		int cnt=0;
 		String data="";
-		System.out.println(title);
 		while(true) {
 			System.out.print(menu);
 			input=sc.nextLine();

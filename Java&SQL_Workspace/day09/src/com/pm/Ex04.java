@@ -42,8 +42,6 @@ public class Ex04 {
 				System.out.println(data);
 			}
 			if (input.equals("3")) {
-				
-				
 			}
 			if (input.equals("4")) {
 				System.out.print("삭제할 학번> ");

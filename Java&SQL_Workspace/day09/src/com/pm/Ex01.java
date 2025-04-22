@@ -35,7 +35,7 @@ public class Ex01 {
 		System.out.println("a\nb");
 		System.out.println(System.getenv()); //환경변수
 		
-		System.out.println(msg);
+
 	}
 
 }

@@ -25,10 +25,10 @@ public class Ex07 {
 				data+=input+"	|";
 				System.out.print("영어> ");
 				input=sc.nextInt();
-				data+=input+"	|";
+				data+=input+"	|";;
 				System.out.print("수학> ");
 				input=sc.nextInt();
-				data+=input+"	\n";
+				data+=input+"	\n";;
 			}
 			if(input==2) {
 				System.out.println(table);

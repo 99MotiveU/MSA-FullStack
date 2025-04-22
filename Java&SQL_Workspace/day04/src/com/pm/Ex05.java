@@ -104,14 +104,14 @@ public class Ex05 {
 				System.out.println("당신은 바위");
 			} else if (g == 3) {
 				System.out.println("당신은 보");
-			} else if (g == 0){ // 1,2,3 이외에는 모두 종료로 설정 || switch-case+예외처리로 가능할듯
+			} else if (g == 0){ // 1,2,3 이외에는 모두 종료로 설정 || switch-case?/switch-case+예외처리로 가능할듯
 				System.out.println("누적 승률");
 				System.out.println(String.format("%d승 %d무 %d패", wcount, ccount, lcount));
 				System.out.println("이용해 주셔서 감사합니다.");
 				break;
 			} else {
-				System.out.println("1,2,3,0 이외의 숫자를 입력하여 프로그램이 종료됩니다.");
-				System.out.print("누적 승률 : "+ String.format("%d승 %d무 %d패 ", wcount, ccount, lcount));
+				System.out.println("1,2,3,0 이외의 숫자를 입력하셨습니다. 프로그램이 종료됩니다.");
+				System.out.print("누적 승률 : "+String.format("%d승 %d무 %d패 ", wcount, ccount, lcount));
 				System.out.println("이용해 주셔서 감사합니다.");
 				break;
 			}
