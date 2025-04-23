@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        // 동적할당당
+        var arr1=new Array();
+        // int[] arr2=new int[]{1111,2222,3333};
+        // var arr1=new Array(2,4,6,8);
+        
+        // int[] arr3={1111,2222,3333};
+        //var arr1=[4444,5555,6666,7777];
+
+        // int[] arr1=new int[3];
+        // var arr1=new Array(3);
+        // arr1[0]=1111;
+        // arr1[1]=2222;
+        // arr1[2]=3333;
+        // arr1[10]=1010;
+        arr1.push(11111);
+        arr1.push(3.14);
+        arr1.push('test');
+        arr1.push(true);
+        arr1.push(new Array(3,5,6));
+        
+        console.log(arr1.length);
+        console.log('------------------------');
+        while(arr1.length){
+            console.log(arr1.pop());
+        }
+        // for(var i=0; i<arr1.length; i++){
+        //     console.log(arr1[i]);
+        // }
+        // console.log('------------------------');
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

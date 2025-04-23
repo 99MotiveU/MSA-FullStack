@@ -1,0 +1,1 @@
+document.write("<h2>loading ex02.js</h2>");

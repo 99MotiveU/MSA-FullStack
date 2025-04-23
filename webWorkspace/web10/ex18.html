@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function func01(){
+            var stu={'kor':0,'eng':0,
+            setKor:function (a){this.kor=a;},getKor:function(){return this.kor},
+            setEng:function (a){this.eng=a;},getEng:function(){return this.eng}
+        };
+            return [stu.setKor,stu.setEng,stu.getKor,stu.getEng];
+        }
+        var student=func01();
+        student[0](90);
+        student[1](80);
+
+        console.log(student[2](),student[3]());
+
+        // arr.push({'kor':90,'eng':70});
+        // arr.push({'kor':80,'eng':77});
+        // arr.push({'kor':70,'eng':79});
+
+        // for(var i=0; i<arr.length; i++){
+        //     console.log(arr[i].kor,arr[i].eng);
+        // }
+    </script>
+</head>
+<body>
+    <h1> </h1>
+</body>
+</html>

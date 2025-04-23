@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        func01();
+
+        function func01(){
+            console.log('func01 run');
+            //return;
+        }//하나의 스크립트가 하나의 단위이기 때문에 다른 스크립트에 있을경우엔 사용불가 하지만 하나의 스크립트 내에 어디든 함수 호출이 있으면 사용된다.
+    </script>
+
+    <!-- <script type="text/javascript" src="ex09.js"></script>
+    <script type="text/javascript">
+        func01();
+    </script> -->
+
+    <script type="text/javascript">
+        var su=func01(1111,2222,3333,4444,555);
+        console.log("su="+su);
+        function func01(){
+            console.log(arguments.length);
+            // return a+b;
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

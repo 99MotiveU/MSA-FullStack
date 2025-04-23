@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        // ES5 (ESMA 2009)
+        console.log("출력");
+        var a=1234;
+        console.log(a);
+        var b="한글";
+        console.log(b);
+        // 자료형
+        // 숫자
+        var c = 1234;
+        console.log(c);
+        console.log(typeof c);
+        var d = 3.14;
+        console.log(d);
+        console.log(typeof d);
+        var e = c+d;
+        console.log(e);
+        // 문자열
+        var h = 'h';
+        var i = "hello";
+        var j = '"abcd"'
+        console.log(typeof h);
+        console.log(typeof i);
+        console.log(j);
+        console.log('----------------------------');
+        // 연산
+        console.log("5원"+2);
+        console.log("5"-2);
+        console.log(parseInt("50,000원")-2);
+        console.log("5"*2);
+        console.log("5"/2);
+        console.log(5%2);
+        console.log(5**2);
+        var k = 10;
+        console.log(k++);
+        console.log(k++);
+        console.log(k++);
+        console.log(5>3);
+        console.log(5<3);
+        console.log(true&&true);
+        console.log(true&&false);
+        console.log(false&&true);
+        console.log(false&&false);
+        console.log(true||true);
+        console.log(true||false);
+        console.log(false||true);
+        console.log(false||false);
+        k+=10;
+        console.log(k);
+        console.log('----------------------------');
+        //if 숫자는 0이 아니면 참 0때 거짓임
+        if(k>0){
+            console.log('양수');
+        }else if(k<0){
+            console.log('음수');
+        }else{
+            console.log('0');
+        }
+
+        if(null){
+            console.log('참');
+        }else{
+            console.log('거짓');
+        }
+        console.log('----------------------------');
+        //switch
+        switch(k){
+            case 1:
+                console.log('=1');
+                break;
+            case 0:
+                console.log('=0');
+                break;
+            default: 
+                console.log('default');
+                break;
+        }
+
+        switch(k){
+            case k>0: console.log('=1');break;
+            case k<0: console.log('=0');break;
+            // case true: console.log('=0');break;
+            // case false: console.log('=0');break;
+            default: console.log('default');break;
+        }
+        console.log('----------------------------');
+        // 반복문
+        for(var i = 0; i < 5; i++){
+            console.log(i);
+        }
+        console.log("i = "+i)
+        var m =5;
+        while(m--){
+            console.log(m);
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
+
+
+

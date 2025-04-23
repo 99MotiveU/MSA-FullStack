@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        var func01=function (){
+            console.log(this);
+        }
+        func01();
+        var obj={'key1':'val1','key2':func01};
+        obj.key2();
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
