@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+var input1,input2,sel,div,btn,link;
+window.onload=function(){
+    link=document.querySelector('a');
+    btn=document.querySelector('button');
+    input1=document.querySelector('input');
+    input2=input1.parentElement.nextElementSibling.querySelector('input');
+    sel=document.querySelector('select');
+    div=document.querySelectorAll('div')[3];
+    btn.onclick=function(e){
+        console.log('클릭');
+    };
+    btn.click();
+    input1.onfocus=function(e){
+        console.log('첫번째 input선택됨');
+        // input1.value='';
+        input1.select();
+    };
+    input1.onkeyup=function(e){
+        if(input1.value.length==6){
+            input2.focus();
+        }
+    };
+    input1.onblur=function(e){
+        console.log('첫번째 input포커스 나감');
+    };
+    input2.onselect=function(e){
+        console.log('선택',e);
+    };
+    sel.onchange=function(e){
+        console.log(sel.value);
+    };
+    input2.onchange=function(e){
+        console.log('버튼의 상태변화');
+    };
+
+    link.onclick=function(e){
+        e.preventDefault();// 기본기능 해제
+        console.log('페이지 이동안함');
+        return false; // dom level2에서 기본기능 해제시...
+    };
+
+};      
+  
+    </script>
+</head>
+<body>
+    <h1>etc event</h1>
+    <div><input/></div>
+    <div><input/></div>
+    <div><select>
+        <option>item1</option>
+        <option>item2</option>
+        <option>item3</option>
+    </select></div>
+    <div>fdslkajlkfjldaskjflaksdjflaksdjfdslakfjl</div>
+    <button>click</button>
+    <a href="ex17.html">link</a>
+</body>
+</html>

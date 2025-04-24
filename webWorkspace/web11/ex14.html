@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+window.onload=function(e){
+    var h1=document.querySelector('h1');
+    var btn=document.querySelector('button');
+    // h1.onclick=function(e){console.log('click',e);};
+    // h1.onmousedown=function(e){console.log('down');};
+    // h1.onmouseup=function(e){console.log('up');};
+    // h1.ondblclick=function(e){console.log('dbclick');};
+    
+    // 화면기준
+    // screenX:2134
+    // screenY:577
+    // element기준
+    // offsetX:132
+    // offsetY:26
+    // document기준
+    // clientX:110
+    // clientY:338
+    
+    btn.onmouseover=function(e){console.log('over');};
+    btn.onmouseout=function(e){console.log('out');};
+    btn.onmouseenter=function(e){console.log('over2');};
+    btn.onmouseleave=function(e){console.log('out2');};
+};
+
+    </script>
+</head>
+<body>
+    <h1>마우스 이벤트</h1>
+    <button>btn</button>
+</body>
+</html>

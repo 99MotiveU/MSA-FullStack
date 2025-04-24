@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        img{
+            width: 150px;
+        }
+        a{
+            color: red;
+            font-size: 30pt;
+        }
+    </style>
+    <script type="text/javascript">
+        document.styleSheets[0].rules[0].style.width='300px';
+    </script>
+</head>
+<body>
+    <h1>element속성 제어</h1>
+    <form action="ex08.html" method="post">
+    <div><label>id</label><input type="text" name="id"></div>
+    <div><label>pw</label><input type="password" name="pw"></div>
+    <div><select name="sel">
+        <option>item1</option>
+        <option>item2</option>
+        <option>item3</option>
+        <option>item4</option>
+    </select></div>
+    <div>
+        <button type="submit">전송</button>
+        <button type="reset">취소</button>
+    </div>
+    </form>
+    <div><a href="https://m.naver.com">link</a></div>
+    <div><img src="imgs/b1.avif" /></div>
+</body>
+</html>

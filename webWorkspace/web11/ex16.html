@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        window.onload=function(){
+            console.log('loading 완료');
+        }
+        window.onresize=function(){
+            console.log('사이즈 변경');
+        }
+        document.onloadstart=function(){
+            console.log('로딩 시작');
+        }
+        document.onloadeddata=function(){
+            console.log('데이터 로딩 완료');
+        }
+        window.onbeforeunload=function(){
+            console.log('이동합니다');
+        };
+    </script>
+</head>
+<body>
+    <a href="ex15.html">link</a>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        // 비동기...
+        // v8 - 단일스레드
+        var callback=function(){
+            //console.log("콜백실행");
+            document.write(new Date());
+            loop=window.setTimeout(callback,1000);
+        };
+        document.write(new Date());
+        var loop=window.setTimeout(callback,1000);
+        // var loop=window.setInterval(callback,3000);
+        console.log("메인실행");
+        // window.clearInterval(loop);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

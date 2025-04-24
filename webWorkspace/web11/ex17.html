@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+window.onload=function(){
+    var h1=document.querySelector('h1');
+    var box=document.querySelector('div');
+    box.style.marginLeft='0px';
+    box.style.marginTop='0px';
+    var input=document.querySelector('input');
+    window.onkeydown=function(e){
+        console.log('down',input.value,e);
+        if(e.keyCode==37)
+            box.style.marginLeft=parseInt(box.style.marginLeft)-10+"px";
+        if(e.keyCode==39)
+            box.style.marginLeft=10+parseInt(box.style.marginLeft)+"px";
+        if(e.keyCode==40)
+            box.style.marginTop=10+parseInt(box.style.marginTop)+"px";
+        if(e.keyCode==38)
+            box.style.marginTop=parseInt(box.style.marginTop)-10+"px";
+    };
+    window.onkeyup=function(e){console.log('up',input.value,e);};
+    window.onkeypress=function(e){console.log('press',input.value,e);};
+};        
+    </script>
+</head>
+<body>
+    <h1>key event</h1>
+    <input type="text">
+    <div>box</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        div{
+            width: 300px;
+            height: 300px;
+            background-color: aqua;
+        }
+        div>div{
+            width: 200px;
+            height: 200px;
+            background-color: burlywood;
+        }
+        div>div>div{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+        }
+    </style>
+    <script type="text/javascript">
+var box1,box2,box3;
+window.onload=function(){
+    box1=document.querySelector('div');
+    box2=document.querySelector('div>div');
+    box3=document.querySelector('div>div>div');
+    // box1.onmouseover=func1;
+    // box2.onmouseover=func1;
+    // box3.onmouseover=func1;
+    // box1.onmouseout=func2;
+    // box2.onmouseout=func2;
+    // box3.onmouseout=func2;
+    
+    box1.onmouseenter=func1;
+    box2.onmouseenter=func1;
+    box3.onmouseenter=func1;
+    box1.onmouseleave=func2;
+    box2.onmouseleave=func2;
+    box3.onmouseleave=func2;
+};  
+function func1(e){
+    console.log(e.target.innerText.substring(0,4),'over');
+}   
+  
+function func2(e){
+    console.log(e.target.innerText.substring(0,4),'out');
+}     
+    </script>
+</head>
+<body>
+    <div>
+        box1
+        <div>
+            box2
+            <div>box3</div>
+        </div>
+    </div>
+</body>
+</html>
