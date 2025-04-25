@@ -1,0 +1,59 @@
+* {
+	margin: 0px;
+	padding: 0px;
+}
+
+body>div {
+	width: 800px;
+	margin: 0px auto;
+}
+
+#header {
+	
+}
+
+#header>h1 {
+	height: 100px;
+	text-indent: -9999px;
+	background-image:
+		url("http://www.kibwa.org/data/skin/default/images/da_image/hd_logo.png");
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+
+#menu {
+	overflow: hidden;
+	background-color: gray;
+}
+
+#menu>ul {
+	list-style: none;
+	width: 400px;
+	padding: 0px;
+	margin: 0px auto;
+}
+
+#menu>ul>li {
+	float: left;
+	width: 100px;
+	text-align: center;
+}
+
+#menu>ul>li>a {
+	display:block;
+	height: 50px;
+	color: white;
+	text-decoration: none;
+	text-transform: uppercase;
+	box-sizing: border-box;
+	line-height: 47px;
+}
+#menu>ul>li>a:hover{
+	border-top: 5px solid white;
+	border-bottom: 5px solid white;
+}
+#footer{
+	text-align: center;
+}
+#footer>address{}
+#footer>p{}
