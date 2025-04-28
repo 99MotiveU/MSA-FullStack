@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+var xhr;
+
+function getList(){
+    xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(e){
+        if(e.target.status==200 && e.target.readyState==4){
+            var data=xhr.responseXML;
+            var stus=data.querySelectorAll('stu');
+
+            var trs='';
+            for(var i=0; i<stus.length; i++){
+                trs+="<tr>";
+                    trs+=('<td>'+stus[i].querySelector('num').innerHTML+'</td>');
+                    trs+=('<td>'+stus[i].querySelector('name').innerHTML+'</td>');
+                    trs+=('<td>'+stus[i].querySelector('kor').innerHTML+'</td>');
+                    trs+=('<td>'+stus[i].querySelector('eng').innerHTML+'</td>');
+                    trs+=('<td>'+stus[i].querySelector('math').innerHTML+'</td>');
+                trs+="</tr>";
+            }
+            document.querySelector('tbody').innerHTML=trs;
+                
+            // var stus=xhr.responseXML.children[0].children;
+            // for(stu of stus){
+            //     var name=stu.children[0].childNodes[0].nodeValue;
+            //     var num=stu.children[1].childNodes[0].nodeValue;
+            //     var kor=stu.children[2].childNodes[0].nodeValue;
+            //     var eng=stu.children[3].childNodes[0].nodeValue;
+            //     var math=stu.children[4].childNodes[0].nodeValue;
+                // trs+='<tr><td>'+name+'</td><td>'+num+'</td><td>'
+                //         +kor+'</td><td>'+eng+'</td><td>'+math+'</td></tr>';
+                // var td1=document.createElement('td');
+                // td1.appendChild(document.createTextNode(name));
+                // var td2=document.createElement('td');
+                // td2.appendChild(document.createTextNode(num));
+                // var td3=document.createElement('td');
+                // td3.appendChild(document.createTextNode(kor));
+                // var td4=document.createElement('td');
+                // td4.appendChild(document.createTextNode(eng));
+                // var td5=document.createElement('td');
+                // td5.appendChild(document.createTextNode(math));
+                // var tr=document.createElement('tr');
+                // tr.appendChild(td1);
+                // tr.appendChild(td2);
+                // tr.appendChild(td3);
+                // tr.appendChild(td4);
+                // tr.appendChild(td5);
+                // document.querySelector('tbody').appendChild(tr);
+            // }
+
+        }else if(e.target.status!=200 && e.target.readyState==4){
+            console.log('에러...!!');
+        }else{
+            console.log("진행중...");
+            // document.querySelector('tbody').innerHTML='loading...!!';
+        }
+    };
+    xhr.open('get','data02.jsp');
+    xhr.send();
+}
+var btn;
+window.onload=function(){
+    btn=document.querySelector('button');
+    btn.onclick=getList;
+    btn.click();
+};        
+    </script>
+</head>
+<body>
+    <h1>목록</h1>
+    <h2>ajax - asyc javascript & xml</h2>
+    
+    <button>load</button>
+    <table>
+        <thead>
+            <tr>
+                <th>학번</th>
+                <th>이름</th>
+                <th>국어</th>
+                <th>영어</th>
+                <th>수학</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>

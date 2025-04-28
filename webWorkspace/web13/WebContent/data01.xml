@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<stus>
+    <stu>
+        <name>user1</name>
+        <num>1111</num>
+        <kor>90</kor>
+        <eng>91</eng>
+        <math>92</math>
+    </stu>
+    <stu>
+        <name>user2</name>
+        <num>2222</num>
+        <kor>80</kor>
+        <eng>81</eng>
+        <math>82</math>
+    </stu>
+    <stu>
+        <name>user3</name>
+        <num>3333</num>
+        <kor>70</kor>
+        <eng>71</eng>
+        <math>72</math>
+    </stu>
+</stus>
