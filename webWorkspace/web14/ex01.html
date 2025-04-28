@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+function jq(){
+    var arg = arguments[0];
+    if(typeof arg =='function'){
+        arg();
+    }else if (typeof arg == 'string'){
+        return document.querySelector(arg);
+    }
+
+    // var obj={'key1':'val1'
+    //             ,'func01':function(){return this;}
+    //             ,'add01':function(msg,msg2){
+    //                 this[msg]=msg2;
+    //                 return this;
+    //             }
+    
+    // };
+    // return obj;
+}
+
+    </script>
+</head>
+<body>
+    <h1>아무거나</h1>
+</body>
+</html>
