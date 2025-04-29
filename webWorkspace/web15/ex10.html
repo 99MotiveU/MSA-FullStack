@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        .carousel{}
+        .carousel>ul{
+            list-style: none;
+            padding: 0px;
+        }
+        .carousel>ul>li{
+            width: 100px;
+            float: left;
+        }
+        .carousel>ul>li>img{
+            width: 100px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        var cnt=0;
+        function nextLoop(){
+            if(cnt>5)cnt=0;
+            $('ul').animate({'margin-left':-100*cnt}, 1000);
+            cnt++;
+        }
+        function prevLoop(){
+            if(cnt<0)cnt=5;
+            $('ul').animate({'margin-left':-100*cnt}, 1000);
+            cnt--;
+        }
+        $(function(){
+            $('<a href="#">&gt;</a>')
+                    .click(function(){
+                        nextLoop();
+                        return false;
+                    })
+                    .insertAfter('ul');
+            $('<a href="#">&lt;</a>')
+                    .click(function(){
+                        prevLoop();
+                        return false;
+                    })
+                    .insertAfter('ul');        
+        });
+    </script>
+</head>
+<body>
+    <div class="carousel">
+        <ul>
+            <li><img src="imgs/s1.avif"/></li>
+            <li><img src="imgs/s2.avif"/></li>
+            <li><img src="imgs/s3.avif"/></li>
+            <li><img src="imgs/s4.avif"/></li>
+            <li><img src="imgs/s5.avif"/></li>
+            <li><img src="imgs/s6.avif"/></li>
+        </ul>
+    </div>
+</body>
+</html>

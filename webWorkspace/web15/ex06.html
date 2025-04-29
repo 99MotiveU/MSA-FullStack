@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(document).one('click','button',function(){
+                $('h1+button').after($('<button>add</button>'));
+            });
+            $(document).on('click','a',function(){
+                console.log('취소');
+                return false;
+            });
+            // $('button').click();
+            $('button').trigger('click');
+        });
+
+    </script>
+</head>
+<body>
+    <h1>event bind</h1>
+    <button>btn</button>
+    <a href="ex01.html">link</a>
+</body>
+</html>

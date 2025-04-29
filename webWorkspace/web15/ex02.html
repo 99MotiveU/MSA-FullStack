@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+$(window).resize(function(){
+    console.log($(window).width(),$(window).height());
+});
+$(window).scroll(function(e){
+    // console.log(e);
+    // console.log($(document).height(),$(window).scrollTop(),$(document).scrollTop());
+    if($(document).height()-180<$(window).scrollTop()){
+        $('ul').append('<li>add</li>');
+    }
+});
+window.onload=function(){
+    console.log('window load...');
+};
+$(window).unload(function(){ // 사용안함
+    console.log('jq unload...');
+});
+$(window).load(function(){ // 사용안함
+    console.log('jq load...');
+});
+$(function(){
+    console.log('jquery run...',document.querySelector('h1'));
+});
+$(document).ready(function(){
+    console.log('document ready...');
+    // $('button').mouseenter(function(){
+    //     console.log('마우스 up');
+    // });
+    // $('button').mouseleave(function(){
+    //     console.log('마우스 out');
+    // });
+    // $('button').mouseover(function(){
+    //     console.log('마우스 up2');
+    // });
+    // $('button').mouseout(function(){
+    //     console.log('마우스 out2');
+    // });
+    $('button') //('button') 생각하고 아래처럼 채널링 가능
+            .click(function(){
+            console.log('버튼클릭');
+        })
+        .mouseup(function(){
+            console.log('버튼위로');
+        })
+        .mousedown(function(){
+            console.log('버튼아래로');
+        })
+        .dblclick(function(){
+            console.log('더블클릭');
+        });
+});
+    </script>
+</head>
+<body>
+    <h1>jquery</h1>
+    <p><a href="ex01.html">ex01</a></p>
+    <button>btn</button>
+    <ul>
+        <li>item1</li>
+        <li>item2</li>
+        <li>item3</li>
+        <li>item4</li>
+        <li>item5</li>
+        <li>item6</li>
+    </ul>
+</body>
+</html>

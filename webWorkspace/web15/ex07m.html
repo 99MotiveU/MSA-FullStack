@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        #carousel1{
+            width: 600px;
+            height: 600px;
+            overflow: hidden;
+        }
+        #carousel1>ul{
+            list-style: none;
+            padding: 0px;
+            margin: 0px auto;
+        }
+        #carousel1>ul>li{
+            float: left;
+        }
+        #carousel1>ul>li>img{
+            width: 600px;
+            height: 600px;
+        }
+    </style>
+    <style rel="stylesheet" type="text/css">
+        #carousel2{
+            width: 600px;
+            height: 200px;
+            overflow: hidden;
+        }
+        #carousel2>ul{
+            list-style: none;
+            padding: 0px;
+            margin: 0px auto;
+        }
+        #carousel2>ul>li{
+            float: left;
+        }
+        #carousel2>ul>li>img{
+            width: 200px;
+            height: 200px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            init01();
+            setInterval(func01, 2000);
+        });
+        var su=1;
+        function func01(){
+            if(su>6)su=1;
+            su++;
+            var img=$('<img/>').attr('src',"imgs/b"+su+".avif");
+            $('#carousel1').empty().append(img);
+            
+        }
+        var arr=[];
+        function init01(){
+            arr.push('imgs/b1.avif');
+            arr.push('imgs/b2.avif');
+            arr.push('imgs/b3.avif');
+            arr.push('imgs/b4.avif');
+            arr.push('imgs/b5.avif');
+            arr.push('imgs/b6.avif');
+            $('#carousel1').html('<ul />');
+            $(arr).map(function (idx,ele){
+                $('<li>').append($('<img/>').attr('src',ele))
+                    .appendTo('#carousel1>ul');
+            });
+        }
+    </script>
+    <script type="text/javascript">
+        $(function(){
+            init02();
+            setInterval(func02, 2000);
+        });
+        su=1;
+        function func02(){
+            if(su>6)su=1;
+            var img=$('<img/>').attr('src',"imgs/s"+su+".avif");
+            $('#carousel2').empty().append(img);
+            su++;
+        }
+        var arr=[];
+        function init02(){
+            arr.push('imgs/b1.avif');
+            arr.push('imgs/b2.avif');
+            arr.push('imgs/b3.avif');
+            arr.push('imgs/b4.avif');
+            arr.push('imgs/b5.avif');
+            arr.push('imgs/b6.avif');
+            $('#carousel2').html('<ul />');
+            $(arr).map(function (idx,ele){
+                $('<li>').append($('<img/>').attr('src',ele))
+                    .appendTo('#carousel2>ul');
+            });
+        }
+    </script>
+</head>
+<body>
+    <div>
+        <div id="header">
+           
+        </div>
+        <div id="menu">
+
+        </div>
+        <div id="content">
+            <div id="carousel1"></div>
+
+            <div id="carousel2"></div>
+        </div>
+        <div id="footer">
+            
+        </div>
+    </div>
+</body>
+</html>

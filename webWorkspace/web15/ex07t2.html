@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        #carousel{
+            width: 300px;
+            height: 400px;
+            overflow: hidden;
+        }
+        #carousel>ul{
+            width: 600px;
+            list-style: none;
+            padding: 0px;
+        }
+        #carousel>ul>li{
+            width: 100px;
+            float: left;
+        }
+        #carousel>ul>li>img{
+            width: 100px;
+        }
+        #carousel>ul~a{
+            width: 100px;
+            height: 100px;
+            background-color: rgba(0,0,0,0);
+            display: block;
+            position: absolute;
+            text-decoration: none;
+            text-align: center;
+            line-height: 100px;
+            font-size: 80px;
+            color: rgba(255,255,255,0.6);
+        }
+        #carousel>ul+a+a{
+            left: 200px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        function showBig(){
+            $('ul').prev().remove();
+            $('ul>li').eq(1).find('img').clone().width(300).insertBefore('ul');
+        }
+        $(function(){
+            $('ul>li').eq(1).find('img').clone().insertBefore('ul');
+            $('<a href="#">&gt;</a>')
+                        .click(function(){
+                            $('ul>li').first().appendTo('ul');
+                            showBig();
+                            return false;
+                        })
+                        .insertAfter('ul');
+            $('<a href="#">&lt;</a>').click(function(){
+                $('ul>li').last().prependTo('ul');
+                showBig();
+                return false;
+            }).insertAfter('ul');
+            // setInterval(function(){
+            //     $('ul+a+a').click();
+            // }, 1000);
+        });
+    </script>
+</head>
+<body>
+    <div id="carousel">
+        <ul>
+            <li><img src="imgs/s1.avif"/></li>
+            <li><img src="imgs/s2.avif"/></li>
+            <li><img src="imgs/s3.avif"/></li>
+            <li><img src="imgs/s4.avif"/></li>
+            <li><img src="imgs/s5.avif"/></li>
+            <li><img src="imgs/s6.avif"/></li>
+        </ul>
+    </div>
+</body>
+</html>

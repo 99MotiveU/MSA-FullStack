@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('h1').select(function(){
+                console.log('선택');
+            });
+            $('form').submit(function(e){
+                e.preventDefault();
+                console.log('폼 취소');
+            });
+            $('input').first().focus(function(){
+                console.log('포커스 온');
+            }).blur(function(){
+                console.log('포커스 아웃');
+            });
+            $('input').eq(1)
+            .focusin(function(){
+                console.log('포커스 온');
+            })
+            .focusout(function(){
+                console.log('포커스 아웃');
+            })
+            ;
+            $('input[type="radio"]').add($('select')).change(function(e){
+                console.log($(e.target).val(),$(e.target).next().text());
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>form event</h1>
+    <form action="ex01.html" method="get">
+        <div>
+            <label>id</label><input/>
+        </div>
+        <div>
+            <label>pw</label><input type="password"/>
+        </div>
+        <div>
+            <input type="radio" name="ra"/><label>item1</label>
+            <input type="radio" name="ra"/><label>item2</label>
+            <input type="radio" name="ra"/><label>item3</label>
+        </div>
+        <div>
+            <select>
+                <option>item1</option>
+                <option>item2</option>
+                <option>item3</option>
+                <option>item4</option>
+            </select>
+        </div>
+        <div>
+            <button type="submit">전송</button>
+            <button type="reset">취소</button>
+        </div>
+    </form>
+</body>
+</html>

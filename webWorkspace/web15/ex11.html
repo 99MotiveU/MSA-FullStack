@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        .carousel{}
+        .carousel>img{
+            display: block;
+        }
+        .carousel>div{
+            margin-left: -100px;
+        }
+        .carousel>div>ul{
+            list-style: none;
+            width: 600px;
+            display: inline-block;
+        }
+        .carousel>div>ul>li{
+            float: left;
+            width: 100px;
+        }
+        .carousel>div>ul>li>img{
+            width: 100px;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+function nextLoop(){
+    $('.carousel>div>div')
+            .hide({'duration':1000,'complete':function(){
+                                    $(this).show();
+                                    $('ul>li').first().appendTo('ul');
+                                    $('.carousel>img').remove();
+                                    $('ul>li').first().find('img').clone().prependTo('.carousel');
+                                    }
+                                    })
+ .find('img').clone().prependTo('.carousel');
+}
+$(function(){
+    $('<div/>').width(100).height(100)
+            .css('display','inline-block').insertBefore('ul');
+    $('.carousel>*').wrapAll('<div/>');
+    $('ul>li').first().find('img').clone().prependTo('.carousel');
+    $('<a href="#">next</a>').insertAfter('ul').click(function(){
+        nextLoop();
+        return false;
+    });
+});
+    </script>
+</head>
+<body>
+    <div class="carousel">
+        <ul>
+            <li><img src="imgs/s1.avif"/></li>
+            <li><img src="imgs/s2.avif"/></li>
+            <li><img src="imgs/s3.avif"/></li>
+            <li><img src="imgs/s4.avif"/></li>
+            <li><img src="imgs/s5.avif"/></li>
+            <li><img src="imgs/s6.avif"/></li>
+        </ul>
+    </div>
+</body>
+</html>

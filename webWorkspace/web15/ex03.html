@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+
+            $(window)
+                .keydown(function(e){
+                    console.log('keydown',e.key,e.keyCode,$('input').val());
+                })
+                .keypress(function(e){
+                    console.log('keypress',e.key,e.keyCode,$('input').val());
+                })
+                .keyup(function(e){
+                    //console.log('keyup',e.key,e.keyCode,$('input').val());
+                    // $('#target').html($('#target').html()+e.key);
+                    $('#target').html($('input').val());
+                });
+            $('button').click(function(){
+                $('#target').html($('#target').html()+'<br/>'+$('input').val());
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>key event</h1>
+    <input/><button>입력</button>
+    <div id="target"></div>
+</body>
+</html>

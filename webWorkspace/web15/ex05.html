@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('a').click(function(){
+                console.log('취소');
+                return false;
+            });
+            $('a').click(function(){
+                console.log('취소');
+                return false;
+            });
+            // $('a').on('click',function(e){
+            //     console.log('취소');
+            //     return false;
+            // });
+
+            var callback=function(){
+                console.log('클릭');
+            };
+            // $('button').first().on('click mouseover',callback);
+
+            // $('button').first().on('click',callback);
+            // $('button').eq(1).on('click',function(){
+            //     $('button').first().off('click',callback);
+            // });
+            // $('button').eq(2).on('click',function(){
+            //     $('button').first().on('click',callback);
+            // });
+            
+            // $('button').bind('click',function(){
+            //     console.log('클릭');
+            // });
+            // $('button').delegate('click',function(){
+            //     console.log('클릭');
+            // });
+        });
+    </script>
+</head>
+<body>
+    <h1>event</h1>
+    <button>btn</button>
+    <button>off</button>
+    <button>on</button>
+    <a href="ex01.html">link</a>
+</body>
+</html>
+

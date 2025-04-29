@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.1/jquery-ui.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('button').eq(0).click(function(){
+                // $('#target').hide({
+                //     'duration':'slow',
+                //     'easing':'linear',//'easeOutBounce',
+                //     'start':function(){console.log('start..')},
+                //     'complete':function(){console.log('end..')},
+                //     'progress':function(a,b,c){console.log(a,b,c);}
+                //     // b: 0 ~> 1
+                //     // c: time 
+                // });
+                $('#target').stop().slideUp(3000);
+                // $('#target').stop().fadeOut(3000);
+            })
+            .next()
+            .click(function(){
+                // $('#target').show(3000);
+                $('#target').stop().slideDown(3000);
+                // $('#target').stop().fadeIn(3000);
+            // })
+        })
+            .next()
+            .click(function(){
+                // $('#target').toggle(3000);
+                // $('#target').slideToggle(3000);
+                $('#target').stop().fadeToggle(3000);
+            })
+            .next()
+            .click(function(){
+                $('#target').stop().fadeTo(3000,0.5);
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>animate 1</h1>
+    <button>btn1</button>
+    <button>btn2</button>
+    <button>btn3</button>
+    <button>btn4</button>
+    <button>btn5</button>
+    <div id="target">
+        <p>정당의 설립은 자유이며, 복수정당제는 보장된다. 누구든지 병역의무의 이행으로 인하여 불이익한 처우를 받지 아니한다. 대법원장은 국회의 동의를 얻어 대통령이 임명한다.</p>
+
+<p>국가는 법률이 정하는 바에 의하여 재외국민을 보호할 의무를 진다. 국무총리는 국회의 동의를 얻어 대통령이 임명한다. 감사위원은 원장의 제청으로 대통령이 임명하고, 그 임기는 4년으로 하며, 1차에 한하여 중임할 수 있다.</p>
+
+
+    </div>
+    <h2>end</h2>
+</body>
+</html>
