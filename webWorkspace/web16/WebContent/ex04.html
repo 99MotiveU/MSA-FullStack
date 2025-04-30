@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+var xhr;
+window.onload=function(){
+    xhr=new XMLHttpRequest();
+    xhr.onreadystatechange=function(e){
+        if(xhr.status==200 && xhr.readyState==4){
+            doc=xhr.responseXML;
+            var list=doc.querySelectorAll('stu');
+            var tbody='';
+            for(var i=0; i<list.length; i++){
+                tbody+='<tr>';
+                    var num=list[i].querySelector('num').innerHTML;
+                    var name=list[i].querySelector('name').innerHTML;
+                    var kor=list[i].querySelector('kor').innerHTML;
+                    var eng=list[i].querySelector('eng').innerHTML;
+                    var math=list[i].querySelector('math').innerHTML;
+                    tbody+='<td>'+num+'</td>';
+                    tbody+='<td>'+name+'</td>';
+                    tbody+='<td>'+kor+'</td>';
+                    tbody+='<td>'+eng+'</td>';
+                    tbody+='<td>'+math+'</td>';
+                tbody+='</tr>';
+            }
+            document.querySelector('tbody').innerHTML=tbody;
+        }
+    };
+    xhr.open('get','stu.xml');
+    xhr.send();
+};        
+    </script>
+</head>
+<body>
+    <h1>xhr - xml</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>num</th>
+                <th>name</th>
+                <th>kor</th>
+                <th>eng</th>
+                <th>math</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>

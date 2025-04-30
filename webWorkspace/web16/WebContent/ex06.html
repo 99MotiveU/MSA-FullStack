@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+$(function(){
+    $.getJSON('stu.json?num=3',function(data,status,xhr){
+        console.log(typeof data, data.stus);
+        data.stus.forEach(function(ele){
+            $('<tr/>')
+                .append($('<td/>').html(ele.num))
+                .append($('<td/>').html(ele.name))
+                .append($('<td/>').html(ele.kor))
+                .append($('<td/>').html(ele.eng))
+                .append($('<td/>').html(ele.math))
+            .appendTo('tbody');
+        });
+
+
+        // var arr=$(data.stus).map(function(idx,ele){
+        //     return $('<tr/>')
+        //         .append($('<td/>').html(ele.num))
+        //         .append($('<td/>').html(ele.name))
+        //         .append($('<td/>').html(ele.kor))
+        //         .append($('<td/>').html(ele.eng))
+        //         .append($('<td/>').html(ele.math))
+        // });
+        // for(ele of arr){
+        //     $('tbody').append(ele);
+        // }
+    },'json');
+});
+
+    </script>
+</head>
+<body>
+    <h1>xhr - xml</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>num</th>
+                <th>name</th>
+                <th>kor</th>
+                <th>eng</th>
+                <th>math</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</body>
+</html>

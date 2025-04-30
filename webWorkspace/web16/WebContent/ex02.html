@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body>div{
+            margin: 0px auto;
+            width: 900px;
+        }
+        #menu{
+            background-color: gray;
+            height: 35px;
+        }
+        #menu>ul{
+            list-style: none;
+            width: 400px;
+            margin: 0px auto;
+        }
+        #menu>ul>li{
+            float: left;
+            width: 100px;
+        }
+        #menu>ul>li>a{
+            display: block;
+            color: white;
+        }
+        #footer{
+            border-top: 2px solid gray;
+            padding: 50px;
+            margin-top: 50px;
+        }
+        .carousel{
+            position: relative;
+        }
+        .carousel>a{
+            position: absolute;
+            z-index: 10;
+            height: 300px;
+            display: block;
+            width: 150px;
+            background-color: black;
+            opacity: 0.3;
+        }
+        .carousel>a+a{
+            left: 750px;
+        }
+
+        .carousel img{
+            width: 100%;
+        }
+
+
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+        var bx,nxt;
+
+        $(function(){
+            bx=$('.carousel>ul').bxSlider({
+                'minSlides':2
+                ,'maxSlides':3
+                ,'slideWidth':300
+                ,'moveSlides':1
+                ,'pager':false
+                ,'controls':false
+            });
+
+            nxt=$('<a href="#">다음</a>')
+                    .click(function(){
+                        bx.goToNextSlide();
+                        return false;
+                    })
+                    .prependTo('.carousel');
+            $('<a href="#">이전</a>')
+                    .click(function(){
+                        bx.goToPrevSlide();
+                        return false;
+                    })
+                    .prependTo('.carousel');
+
+        });
+        setInterval(function(){
+            nxt.click();
+        },3000);
+    </script>
+</head>
+<body>
+    <div>
+        <div id="header">
+            <h1>로고</h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="#">menu</a></li>
+                <li><a href="#">menu</a></li>
+                <li><a href="#">menu</a></li>
+                <li><a href="#">menu</a></li>
+            </ul>
+        </div>
+        <div id="content">
+            <div class="carousel">
+                <ul>
+                    <li><img src="imgs/s1.avif"/></li>
+                    <li><img src="imgs/s2.avif"/></li>
+                    <li><img src="imgs/s3.avif"/></li>
+                    <li><img src="imgs/s4.avif"/></li>
+                    <li><img src="imgs/s5.avif"/></li>
+                    <li><img src="imgs/s6.avif"/></li>
+                </ul>
+            </div>
+        </div>
+        <div id="footer">
+            <address>&copy;한국IT여성기업인협회 Inc. All Rights Reserved.</address>
+        </div>
+    </div>
+</body>
+</html>

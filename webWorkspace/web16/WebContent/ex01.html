@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        .bxslider{}
+        .bxslider img{
+            width: 100%;
+        }
+    </style>
+    </styl imge
+    width: 100%;>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+var bx;
+$(function(){
+    bx=$('.bxslider').bxSlider({
+        'minSlides':2
+        ,'maxSlides':3
+        ,'slideWidth':200
+        ,'moveSlides':1
+        ,'auto':false
+        ,'pause':2000
+        ,'autoHover':true
+        ,'pager':true
+        // ,'pagerType':'short'
+        // ,'pagerShortSeparator':'-'
+        ,'pagerSelector':$('h2')
+        ,'nextText':'다음'
+        ,'prevText':'이전'
+        ,'nextSelector':$('h2+p>span').eq(1)
+        ,'prevSelector':$('h2+p>span').eq(0)
+        ,'autoControls':true
+        ,'startText':'시작'
+        ,'stopText':'정지'
+
+        //Callback
+        // ,'onSliderLoad':function(){
+        //     console.log('load...')
+        // }
+        // ,'onSliderResize':function(){
+        //     console.log('resize');
+        // }
+        // ,'onSliderLoad':function(){
+        //     console.log('load...');
+        // }
+        // ,'onSliderResize':function(){
+        //     console.log('resize');
+        // }
+        // ,'onSlideNext':function(a,b,c){
+        //     console.log('다음',a.find('img').attr('src'),b,c);
+        // }
+        // ,'onSlideAfter':function(a,b,c){
+        //     console.log('after',a,b,c);
+        // }
+        // ,'onSlideBefore':function(a,b,c){
+        //     console.log('before',a,b,c);
+        //     // $('#target').attr('src',a.find('img').attr('src'));
+        // }
+        // ,'onSlidePrev':function(){
+        //     console.log('이전');
+        // }
+    });
+});
+    </script>
+</head>
+<body>
+    <div class="bxslider">
+        <div><img src="imgs/b1.avif" /></div>
+        <div><img src="imgs/b2.avif" /></div>
+        <div><img src="imgs/b3.avif" /></div>
+        <div><img src="imgs/b4.avif" /></div>
+        <div><img src="imgs/b5.avif" /></div>
+        <div><img src="imgs/b6.avif" /></div>
+      </div> 
+
+      <h2 id="p"></h2>
+      <p>
+        <span><</span>
+        
+        <span>></span>
+      </p>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>web16</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>stuXml</servlet-name>
+  	<servlet-class>com.web16.stu.StuXml</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>stuXml</servlet-name>
+	<url-pattern>/stu.xml</url-pattern>  
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>stuJson</servlet-name>
+  	<servlet-class>com.web16.stu.StuJson</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>stuJson</servlet-name>
+	<url-pattern>/stu.json</url-pattern>  
+  </servlet-mapping>
+  
+  
+  <servlet>
+  	<servlet-name>ex01</servlet-name>
+  	<servlet-class>com.web16.step01.Ex01</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ex02</servlet-name>
+  	<servlet-class>com.web16.step01.Ex02</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ex04</servlet-name>
+  	<servlet-class>com.web16.step02.Ex04</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>ex05</servlet-name>
+  	<servlet-class>com.web16.step03.Ex06</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ex05</servlet-name>
+  	<url-pattern>/step02/test05</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ex04</servlet-name>
+	<url-pattern>/step02/test04.it</url-pattern>  
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ex02</servlet-name>
+  	<url-pattern>/test02.html</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ex01</servlet-name>
+  	<url-pattern>/test01.html</url-pattern>
+  </servlet-mapping>
+  
+</web-app>

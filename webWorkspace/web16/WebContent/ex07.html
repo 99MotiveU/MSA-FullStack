@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript">
+$(function(){
+    $('form').submit(function(){
+        func01();
+        return false;
+    });
+});
+function func01(){
+    $.ajax({
+        url:'stu.json'
+        ,type:'post' //,method:'post'
+        ,data: $('form').serialize()
+        ,dataType:'json'
+        ,success:function(data,status,xhr){
+            console.log(data,status,xhr);
+        }
+        ,error:function(xhr,msg,err){
+            console.log(xhr,msg,err);
+        }
+    });
+}
+    </script>
+</head>
+<body>
+    <h1>xhr - xml</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>num</th>
+                <th>name</th>
+                <th>kor</th>
+                <th>eng</th>
+                <th>math</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <form>
+        <input type="text" name="num"/>
+        <button>전송</button>
+    </form>
+</body>
+</html>
