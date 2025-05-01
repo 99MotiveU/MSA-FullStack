@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style rel="stylesheet" type="text/css">
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        body>div{
+            margin: 0px auto;
+            width: 900px;
+        }
+        #header{}
+        #header>h1{
+            background-image: url('http://www.kibwa.org/data/skin/default/images/da_image/hd_logo.png');
+            background-repeat: no-repeat;
+            background-position: left;
+            height: 150px;
+            text-indent: -9999px;
+        }
+        #menu{
+            height: 40px;
+            background-color: gray;
+        }
+        #menu>ul{
+            list-style: none;
+            width: 400px;
+            margin: 0px auto;
+        }
+        #menu>ul>li{
+            width: 100px;
+            float: left;
+        }
+        #menu>ul>li>a{
+            display: block;
+            height: 40px;
+            line-height: 40px;
+            color: white;
+            text-decoration: none;
+            text-align: center;
+        }
+        #menu>ul>li>a:hover{
+            background-color: darkgray;
+        }
+        #footer{
+            text-align: center;
+        }
+        .bx{
+            width: 900px;
+            margin: 50px auto;
+        }
+        .bx-pager{
+            margin-top: 0px;
+            text-align: center;
+        }
+        .bx-pager>div{
+            display: inline;
+            margin: 0px 10px;
+        }
+        .bx-pager>div>a{
+            text-decoration: none;
+            font-size: 0px;
+            color: gray;
+        }
+        .bx-pager>div>a:after{
+            font-size: 20px;
+            content: '■';
+        }
+        .bx-controls-direction{
+            display: none;
+        }
+        #bbs table{
+            width: 800px;
+            margin: 10px auto 50px auto;
+            border-collapse: collapse;
+        }
+        #bbs table,#bbs table th,#bbs table td{
+            border: 1px solid gray;
+        }
+        #bbs table tr>th:first-child{
+            width: 80px;
+        }
+        #bbs table tr>th:nth-child(3){
+            width: 100px;
+        }
+        #bbs table tr>th:last-child{
+            width: 120px;
+        }
+        #bbs table tr>td{
+            height: 45px;
+        }
+        .btn{
+            display: block;
+            width: 80%;
+            margin: 10px auto;
+            text-align: center;
+            height: 45px;
+            line-height: 45px;
+            border: 3px solid gray;
+            border-radius: 10px;
+            background-color: gray;
+        }
+        a.btn{
+            background-color: white;
+        }
+        .popup{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            left: 0px;
+            top: 0px;
+            background-color: rgba(0,0,0,0.2);
+        }
+        .popup>div{
+            width: 500px;
+            margin: 120px auto;
+            height: 300px;
+            background-color: white;
+            padding: 50px;
+            border-radius: 20px;
+        }
+        .popup>div>h2{
+            text-align: center;
+        }
+        .popup>div>form{
+            width: 100%;
+        }
+        .popup>div>form>div{
+            margin: 0px 3px;
+            text-align: center;
+        }
+        .popup>div>form>div>label{
+            display: inline-block;
+            width: 90px;
+        }
+        .popup>div>form>div>input{
+            width: 400px;
+        }
+        .popup>div>form>div>textarea{
+            width: 100%;
+            height: 200px;
+        }
+        .popup>div>form>div>button{
+            width: 31%;
+        }
+    </style>
+    <script type="text/javascript" src="js/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery.bxslider.min.js"></script>
+    <script type="text/javascript">
+var mn1,mn2,mn3,mn4;
+$(function(){
+    $('#bbs a.btn').click(function(e){
+        $('.popup').fadeIn(1000);
+    });
+    $('.popup').click(function(e){
+        popupHide();
+    });
+    $('.popup>.frame').click(function(e){
+        e.stopPropagation();
+    });
+    
+    
+    $('.bx>ul').bxSlider({
+        slideWidth: 300
+        ,minSlides: 2
+        ,maxSlides: 3
+        ,moveSlides: 1
+    });
+    setInterval(function(){
+        $('.bx-next').click(); 
+    }, 3000);
+    mn1=$('#menu>ul>li>a').first().click(function(e){
+        $('#menu~div').show().not('#footer').not('#index').hide();
+    });
+    mn2=$('#menu>ul>li>a').eq(1).click(function(e){
+        $('#menu~div').show().not('#footer').not('#intro').hide();
+    });
+    mn3=$('#menu>ul>li>a').eq(2).click(function(e){
+        $('#menu~div').show().not('#footer').not('#bbs').hide();
+        bbsList();
+    });
+    mn4=$('#menu>ul>li>a').eq(3).click(function(e){
+        $('#menu~div').show().not('#footer').not('#login').hide();
+    });
+
+    $(document).on('click','#bbs table>tbody>tr>td',function(){
+        var num=$(this).parent().children().first().text();
+        selectOne(num);
+    });
+
+    mn1.click();
+    popupHide();
+});   
+function addList(){
+    $.post('list.json',$('.popup form').serialize(),function(){
+        $('.popup').click();
+        mn3.click();
+    });
+}
+function addEvent(e){
+        e.preventDefault();
+        addList();
+}
+function editEvent(e){
+        e.preventDefault();
+        $(e.target).prev().text('수정 페이지');
+        $(e.target).find('input').eq(0).removeProp("readonly");
+        $(e.target).find('textarea').removeProp("readonly");
+        $(e.target).one('submit',function(e){
+            e.preventDefault();
+            editOne();
+            $('#menu a').eq(2).click();
+            bbsList();
+        });
+}
+function popupHide(){
+    $('.popup').find('h2').text('입력 페이지');
+    $('.popup').find('input').val("");
+    $('.popup').find('input').removeProp('readonly');
+    $('.popup').find('textarea').val("");
+    $('.popup').find('textarea').removeProp('readonly');
+    $('.popup').hide();
+    $('.popup form').on('submit',addEvent);
+}
+function editOne(){
+    console.log($('.popup form').serialize());
+    $.ajax({
+        url: 'bbs.json',
+        method: 'post',
+        data: $('.popup form').serialize(),
+        contentType: "application/x-www-form-urlencoded; charset=utf-8",
+        success: function(){
+            popupHide();
+        },
+        error: function(xhr,msg){
+            popupHide();
+            alert("error: "+msg);
+        }
+    });
+}
+function selectOne(num){
+    // $.getJSON('bbs.json?num='+num,function(data){
+    //     $('.popup').find('input').eq(0).val(data.bbs[0].num);
+    //     $('.popup').find('input').eq(1).val(data.bbs[0].id);
+    //     $('.popup').find('textarea').val(data.bbs[0].content);
+    //     $('.popup').show();
+    // });
+    $.ajax({
+        url: 'bbs.json?num='+num,
+        method: 'get',
+        success: function(data){
+            $('.popup').find('h2').text('상세 페이지');
+            $('.popup').find('input').prop('readonly',true);
+            $('.popup').find('textarea').prop('readonly',true);
+                    $('.popup').find('input').eq(0).val(data.bbs[0].sub);
+                    $('.popup').find('input').eq(1).val(data.bbs[0].id);
+                    $('.popup').find('input').eq(2).val(data.bbs[0].num);
+                    $('.popup').find('textarea').val(data.bbs[0].content);
+                    $('.popup').show();
+            $('.popup form').off('submit',addEvent);
+            $('.popup form').one('submit',editEvent);
+                }
+    });
+}
+function bbsList(){
+	$.getJSON('list.json',function(data){
+		$('#bbs tbody').empty();
+		$(data.bbs).map(function(idx,ele){
+			$('<tr/>')
+				.append($('<td/>').text(ele.num))
+				.append($('<td/>').text(ele.sub))
+				.append($('<td/>').text(ele.id))
+				.append($('<td/>').text(ele.nalja))
+		 	.appendTo('#bbs tbody');
+		});
+	});
+}
+    </script>
+</head>
+<body>
+    <div >
+        <div id="header">
+            <h1>logo</h1>
+        </div>
+        <div id="menu">
+            <ul>
+                <li><a href="#index">HOME</a></li>
+                <li><a href="#intro">INTRO</a></li>
+                <li><a href="#bbs">BBS</a></li>
+                <li><a href="#login">LOGIN</a></li>
+            </ul>
+        </div>
+        <div id="index">
+            <div class="bx">
+                <ul>
+                    <li><img src="imgs/s1.avif"/></li>
+                    <li><img src="imgs/s2.avif"/></li>
+                    <li><img src="imgs/s3.avif"/></li>
+                    <li><img src="imgs/s4.avif"/></li>
+                    <li><img src="imgs/s5.avif"/></li>
+                    <li><img src="imgs/s6.avif"/></li>
+                </ul>
+            </div>
+        </div>
+        <div id="intro">
+            <h2>intro page</h2>
+            <p>안녕하십니까. 한국IT여성기업인협회 회장 김덕재입니다.
+                한국IT여성기업인협회는 과학기술정보통신부 산하 유일한 여성기업인 단체로서
+                국내 IT 산업의 발전을 위해 여성기업인들의 경쟁력 강화, ICT 여성 인재 양성,
+                경력단절 여성의 경제활동 참여 확대 등 다양한 노력을 기울이고 있습니다.
+            </p>
+            <p>    
+                저희 협회는 IT여성기업의 Re-Start, Re-Challenge, Re-Innovation이라는 비전과
+                다음과 같은 네 가지 추진 전략을 세우고, 이를 실천해 나갈 것입니다.
+            </p>
+            <p>    
+                첫째, 새로운 출발을 위해 회원사들의 성장동력을 모색하고,
+                IT기업인의 성공 노하우 공유 네트워크를 확대하여 비즈니스 활성화를 도모하겠습니다.</p>
+        </div>
+        <div id="bbs">
+            <h2>게시판</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>num</th>
+                        <th>subject</th>
+                        <th>id</th>
+                        <th>nalja</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+            <p><a class="btn" href="#add">입력</a></p>
+        </div>
+        <div id="login">
+            <h2>로그인</h2>
+            <form action="#" method="post">
+                <div>
+                    <label>id</label><input name="id" />
+                </div>
+                <div>
+                    <label>pw</label><input type="password" name="pw"/>
+                </div>
+                <div>
+                    <button type="submit">로그인</button>
+                    <button type="reset">취소</button>
+                    <button type="button">회원가입</button>
+                </div>
+            </form>
+        </div>
+        <div id="footer">
+            <address>(06130) 서울 강남구 테헤란로 7길 22, 한국과학기술회관 1관 303호
+            </address>
+            <p>©한국IT여성기업인협회 Inc. All Rights Reserved.</p>
+        </div>
+    </div>
+
+    <div class="popup">
+        <div class="frame">
+            <h2>입력페이지</h2>
+            <form>
+                <div>
+                    <label>제목</label><input name="sub"/>
+                </div>
+                <div>
+                    <label>글쓴이</label><input name="id"/>
+                </div>
+                <div>
+                    <textarea name="content"></textarea>
+                </div>
+                <div>
+                    <input type="hidden" name="num"/>
+                    <button type="submit">입력</button>
+                    <button type="reset">취소</button>
+                    <button type="button">뒤로</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
