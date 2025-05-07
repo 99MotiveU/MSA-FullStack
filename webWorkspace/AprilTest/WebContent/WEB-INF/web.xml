@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+  <display-name>AprilTest</display-name>
+  <welcome-file-list>
+    <welcome-file>list.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>list</servlet-name>
+  	<servlet-class>com.mvc.controller.ListController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>list</servlet-name>
+  	<url-pattern>/list</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>add</servlet-name>
+  	<servlet-class>com.mvc.controller.AddController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>add</servlet-name>
+  	<url-pattern>/add</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>detail</servlet-name>
+  	<servlet-class>com.mvc.controller.DetailController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>detail</servlet-name>
+  	<url-pattern>/detail</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>reply</servlet-name>
+  	<servlet-class>com.mvc.controller.ReplyController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>reply</servlet-name>
+  	<url-pattern>/reply</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>edit</servlet-name>
+  	<servlet-class>com.mvc.controller.EditController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>edit</servlet-name>
+  	<url-pattern>/edit</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>delete</servlet-name>
+  	<servlet-class>com.mvc.controller.DeleteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>delete</servlet-name>
+  	<url-pattern>/delete</url-pattern>
+  </servlet-mapping>
+</web-app>
