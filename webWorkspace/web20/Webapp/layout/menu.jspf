@@ -1,0 +1,23 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<div class="container">
+	<div id="header">
+		<h1>logo</h1>
+		<c:if test="${sessionScope.login ne null }">
+		<span>${sessionScope.login }님 로그인 중..</span>
+		</c:if>
+	</div>
+	<div id="menu" class="bg-primary text-center">
+		<a href="${root }index.do">home</a>
+		<a href="${root }intro.do">intro</a>
+		<a href="${root }bbs/list.do">bbs</a>
+		<c:if test="${sessionScope.login eq null }">
+		<a href="${root }login/signin.do">login</a>
+		<a href="${root }login/join.do">join</a>
+		</c:if>
+		<c:if test="${sessionScope.login ne null }">
+		<a href="${root }login/signout.do">logout</a>
+		</c:if>
+	</div>
+	<div id="content">
+	<!-- begin -->
