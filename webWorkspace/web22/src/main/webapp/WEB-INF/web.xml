@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee                       http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+
+	<display-name>Archetype Created Web Application</display-name>
+	<welcome-file-list>
+		<welcome-file>index.do</welcome-file>
+	</welcome-file-list>
+	<listener>
+		<listener-class>com.my.config.MyListener02</listener-class>
+	</listener>
+
+	<context-param>
+		<param-name>key1</param-name>
+		<param-value>value1</param-value>
+	</context-param>
+
+	<filter>
+		<filter-name>filter1</filter-name>
+		<filter-class>com.my.config.MyFilter01</filter-class>
+	</filter>
+	<filter>
+		<filter-name>filter2</filter-name>
+		<filter-class>com.my.config.MyFilter02</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>filter1</filter-name>
+		<url-pattern>/ex01</url-pattern>
+	</filter-mapping>
+	<filter-mapping>
+		<filter-name>filter2</filter-name>
+		<url-pattern>/ex01</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>ex01</servlet-name>
+		<servlet-class>com.my.controller.Ex01Controller</servlet-class>
+		<init-param>
+			<param-name>param1</param-name>
+			<param-value>aaaa</param-value>
+		</init-param>
+		<init-param>
+			<param-name>param2</param-name>
+			<param-value>bbbb</param-value>
+		</init-param>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>ex01</servlet-name>
+		<url-pattern>/ex01</url-pattern>
+	</servlet-mapping>
+</web-app>
