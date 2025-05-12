@@ -1,0 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<nav>
+	<a href="${pageContext.request.contextPath}/index">index</a>
+	<a href="${pageContext.request.contextPath }/main">main</a>
+	<a href="${pageContext.request.contextPath }/bbs/list">list</a>
+	<a href="${pageContext.request.contextPath }/bbs/insert">insert</a>
+	<a href="${pageContext.request.contextPath }/bbs/add">add</a>
+</nav>
