@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="deptDao" class="com.dept.model.DeptDao"></bean>
+
+	<bean id="handlerMapping"
+		class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
+
+	<bean scope="singleton" name="/index.do"
+		class="com.dept.controller.MainController"></bean>
+	<bean name="/dept/list.do"
+		class="com.dept.controller.ListController">
+		<property name="deptDao" ref="deptDao"></property>
+	</bean>
+	<bean name="/dept/add.do"
+		class="com.dept.controller.AddController">
+		<property name="deptDao" ref="deptDao"></property>
+	</bean>
+	<bean name="/dept/detail.do"
+		class="com.dept.controller.DetailController">
+		<property name="deptDao" ref="deptDao"></property>
+	</bean>
+	<bean name="/dept/edit.do"
+		class="com.dept.controller.EditController">
+		<property name="deptDao" ref="deptDao"></property>
+	</bean>
+	<bean name="/dept/delete.do"
+		class="com.dept.controller.DeleteController">
+		<property name="deptDao" ref="deptDao"></property>
+	</bean>
+
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/"></property>
+		<property name="suffix" value=".jsp"></property>
+	</bean>
+</beans>
+
+
+
+
+
+
