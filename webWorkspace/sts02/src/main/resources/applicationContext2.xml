@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- IoC & DI  -->
+
+<bean id="module07" class="com.my.module.Module07">
+	<property name="props">
+		<props>
+			<prop key="key1">val1</prop>
+			<prop key="key2">val2</prop>
+			<prop key="key3">val3</prop>
+			<prop key="key4">val4</prop>
+		</props>
+	</property>
+</bean>
+
+<bean id="module06" class="com.my.module.Module06">
+	<property name="map">
+		<map>
+			<entry><key><value>k1</value></key><value>val1</value></entry>
+			<entry key="k2"><value>val2</value></entry>
+			<entry key="k3"><value>val3</value></entry>
+			<entry key="k4"><value>val4</value></entry>
+		</map>
+	</property>
+</bean>
+
+<bean id="module04" class="com.my.module.Module04">
+	<property name="arr">
+		<set>
+			<value>item1</value>
+			<value>item2</value>
+			<value>item3</value>
+			<value>item4</value>
+		</set>
+	</property>
+</bean>
+
+<bean id="nalja" class="java.util.Date"></bean>
+<bean id="module03" class="com.my.module.Module03">
+	<property name="su1" value="1234"></property>
+	<property name="su2" value="3.14"></property>
+	<property name="su3" value="A"></property>
+	<property name="boo" value="true"></property>
+	<property name="msg" value="hello"></property>
+	<property name="nalja" ref="nalja"></property>
+</bean>
+
+<bean id="service" class="com.my.service.Service01">
+	<constructor-arg ref="myModule"></constructor-arg>
+</bean>
+
+</beans>

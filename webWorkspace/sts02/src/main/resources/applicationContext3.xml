@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- AOP -->
+	<bean id="beforeAdvice" class="com.my.aop.BeforePrint"></bean>
+	<bean id="afterAdvice" class="com.my.aop.AfterPrint"></bean>
+	<bean id="throwsAdvice" class="com.my.aop.ErrPrint"></bean>
+	<bean id="aroundAdvice" class="com.my.aop.AroundPrint"></bean>
+	<!-- 
+	<bean id="proxy" 
+	class="org.springframework.aop.framework.ProxyFactoryBean">
+		<property name="target" ref="myModule2"></property>
+		<property name="interceptorNames">
+			<array>
+				<value>afterAdvice</value>
+				<value>beforeAdvice</value>
+			</array>
+		</property>
+	</bean> 
+	
+	<bean id="pointcut" 
+	class="org.springframework.aop.support.NameMatchMethodPointcut">
+		<property name="mappedNames">
+			<array>
+				<value>func02</value>
+				<value>func03</value>
+			</array>
+		</property>
+	</bean>
+	-->
+	
+	<bean id="pointcut"
+	class="org.springframework.aop.support.JdkRegexpMethodPointcut">
+		<property name="pattern" value=".*func.*"></property>
+	</bean>
+	
+	<bean id="pointcutAdvisor"
+	class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="pointcut" ref="pointcut"/>
+		<property name="advice" ref="beforeAdvice"/>
+	</bean>
+	
+	<bean id="myModule2" class="com.my.module.Module10"></bean>
+	<bean 
+	class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">
+		<property name="beanNames" value="myModule2"></property>
+		<property name="interceptorNames">
+			<array>
+				<value>pointcutAdvisor</value>
+				<!-- 
+				<value>aroundAdvice</value>
+				<value>throwsAdvice</value>
+				<value>afterAdvice</value>
+				<value>beforeAdvice</value>
+				 -->
+			</array>
+		</property>
+	</bean>
+	
+	<bean class="com.my.service.Service02">
+		<property name="module" ref="myModule2"></property>
+	</bean>
+
+</beans>

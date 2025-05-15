@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- handler mapping -->
+	<bean id="handlerMapping"
+	class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="urlMap">
+			<map>
+				<entry key="/index.do"><ref bean="index"/></entry>
+				<entry key="/intro.do"><ref bean="intro"/></entry>
+				<entry key="/dept/list.do"><ref bean="list"/></entry>
+				<entry key="/dept/add.do"><ref bean="add"/></entry>
+				<entry key="/dept/insert.do"><ref bean="insert"/></entry>
+			</map>
+		</property>
+	</bean>
+	<bean id="index" class="com.my.controller.IndexController">
+		<property name="viewName" value="index"/>
+	</bean>
+	<bean id="intro" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="intro"/>
+	</bean>
+	<bean id="list"
+	class="com.my.controller.ListController">
+	<property name="deptDao" ref="deptDao"></property>
+	</bean>
+	<bean id="add" class="org.springframework.web.servlet.mvc.ParameterizableViewController">
+		<property name="viewName" value="dept/add"/>
+	</bean>
+	<bean id="insert"
+	class="com.my.controller.InsertController">
+		<property name="deptDao" ref="deptDao"></property>
+	</bean>
+	<!-- view resolver -->
+	<bean id="viewResolver"
+	class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/views/"/>
+		<property name="suffix" value=".jsp"/>
+	</bean>
+	
+	<bean id="beforeController"
+	class="com.my.aop.BeforeController"></bean>
+	
+	<bean id="pointcut2" 
+	class="org.springframework.aop.support.NameMatchMethodPointcut">
+		<property name="mappedNames">
+			<array>
+				<value>handleRequest</value>
+			</array>
+		</property>
+	</bean>
+	<bean id="pointcutAdvisor2"
+	class="org.springframework.aop.support.DefaultPointcutAdvisor">
+		<property name="pointcut" ref="pointcut2"></property>
+		<property name="advice" ref="beforeController"></property>
+	</bean>
+	<bean
+	class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator">
+		<property name="beanName" value="insert"></property>
+		<property name="interceptorNames">
+			<list>
+				<value>pointcutAdvisor2</value>
+			</list>
+		</property>
+	</bean>
+	
+</beans>
+
+
+
+
+
