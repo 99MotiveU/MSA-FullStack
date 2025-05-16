@@ -1,0 +1,14 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+	  	<!-- end content -->
+	  </div>
+	</div>
+	<div class="row">
+	  <div class="col-md-12">
+	    <address class="text-center">
+		  <strong>©한국IT여성기업인협회 Inc. All Rights Reserved.</strong><br>
+		  <abbr title="Phone">P:</abbr> 02-6956-9523, 02-6956-9540
+		</address>
+	  </div>
+	</div>
+</div>

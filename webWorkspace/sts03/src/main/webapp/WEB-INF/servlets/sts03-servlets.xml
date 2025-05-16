@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<beans:bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+
+	<beans:bean id="handlerMapping" 
+	class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"/>
+	
+	<beans:bean class="org.springframework.web.servlet.mvc.ParameterizableViewController"
+		p:viewName="index" name="/index.do"
+	/>
+	
+	<beans:bean name="/dept/list.do" 
+	class="com.my.controller.ListController"></beans:bean>
+	<beans:bean 
+	class="com.my.controller.AddController"></beans:bean>
+	<beans:bean name="/dept/add.do"
+	p:commandClass="com.my.model.DeptDto"
+	p:commandName="deptDto"
+	p:supportedMethods="GET,POST"
+	class="com.my.controller.InsertController"></beans:bean>
+	
+	<beans:bean name="/dept/detail.do" 
+	class="com.my.controller.DetailController"
+	/>
+	
+	<beans:bean name="/dept/edit.do"
+	class="com.my.controller.EditController"
+	p:commandClass="com.my.model.DeptDto"
+	p:commandName="bean"
+	p:supportedMethods="GET,POST"
+	/>
+	
+	<beans:bean id="/dept/delete.do"
+	class="com.my.controller.DeleteController"
+	/>
+	
+	<beans:bean id="viewResolver"
+	class="org.springframework.web.servlet.view.InternalResourceViewResolver"
+	p:prefix="/WEB-INF/views/" p:suffix=".jsp"
+	/>
+
+</beans:beans>
+
+
+
+
+
+
+
+
+
+
+
+

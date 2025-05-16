@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<bean
+class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+	<property name="location" value="classpath:/db.properties"/>
+</bean>
+	<bean id="dataSource"
+	class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${db.mysql.driver}"/>
+		<property name="url" value="${db.mysql.url}"/>
+		<property name="username" value="${db.mysql.user}"/>
+		<property name="password" value="${db.mysql.pw}"/>
+	</bean>
+
+	<bean id="jdbcTemplate"
+	class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean id="transactionDefinition"
+	 class="org.springframework.transaction.support.DefaultTransactionDefinition"/>
+	 
+	<bean id="transactionManager" 
+	class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean id="sqlMapClient"
+	class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="configLocation" value="classpath:/sqlMapConfig.xml"/>
+	</bean>
+	
+	<bean id="sqlMapClientTemplate" 
+	class="org.springframework.orm.ibatis.SqlMapClientTemplate">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+
+	<bean id="deptDao"
+	class="com.my.model.DeptDao4Impl">
+	<property name="sqlMapClientTemplate" ref="sqlMapClientTemplate"></property>
+	</bean>
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
