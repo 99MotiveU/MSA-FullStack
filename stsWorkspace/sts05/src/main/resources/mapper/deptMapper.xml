@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" 
+"https://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<select id="selectAll" resultClass="com.my.sts05.dept.model.DeptVo">
+	select * from dept order by deptno desc
+	</select>
+	<insert id="insertOne" parameterClass="com.my.sts05.dept.model.DeptVo">
+	insert into dept values (#deptno#,#dname#,#loc#)
+	</insert>
+</sqlMap>
+
+
+
+
+
+
