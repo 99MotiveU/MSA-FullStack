@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+	<context:annotation-config/>
+	<context:component-scan base-package="com.my.sts"/>
+	<aop:aspectj-autoproxy/>
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	<bean id="dataSource"
+	class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:33306/xe"/>
+		<property name="username" value="scott"/>
+		<property name="password" value="tiger"/>
+	</bean>
+
+	<bean id="jdbcTemplate"
+	class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource"></property>
+	</bean>
+	
+	<bean id="transactionManager"
+	class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource"/>
+	</bean>
+	
+	
+	
+			<!-- 
+	<bean id="advice"
+	class="com.my.sts.aop.MyAop"></bean>
+	
+	<aop:config>
+		<aop:pointcut expression="execution(* com.my.sts.service.*.func*(..))" id="cut"/>
+		<aop:aspect ref="advice">
+			<aop:around method="around" pointcut-ref="cut"/> 
+			<aop:after method="afterMethod" pointcut-ref="cut"/>
+			<aop:after-throwing throwing="ex" method="afterErr" pointcut-ref="cut"/>
+			<aop:after-returning returning="val" method="afterReturn" pointcut-ref="cut"/>
+			<aop:before method="beforeMethod" pointcut-ref="cut"/>
+		</aop:aspect>
+	</aop:config>
+			-->
+		<!-- 
+		<aop:advisor 
+			advice-ref="methodBeforeAdvice"
+			pointcut-ref="cut"
+		/> 
+		-->
+	
+	
+<!-- 
+	<bean id="nalja" class="java.util.Date"></bean>
+	<bean id="myModule" 
+	class="com.my.sts.di.MyModule01">
+		<property name="su1" value="1111"></property>
+		<property name="su2" value="3.14"></property>
+		<property name="ch3" value="A"></property>
+		<property name="boo" value="true"></property>
+		<property name="msg" value="hello"></property>
+		<property name="nalja">
+			<ref bean="nalja"/>
+		</property>
+	</bean>
+ -->
+</beans>
