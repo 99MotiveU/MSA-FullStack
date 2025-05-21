@@ -1,0 +1,43 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="${pageContext.request.contextPath }/">
+        한국IT여성기업인협회
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+    	<ul class="nav navbar-nav">
+    	<%
+    	String url=request.getRequestURI().substring(
+    			(request.getContextPath()+"/WEB-INF/views").length());
+    	if(url.equals("/index.jsp")){
+    		pageContext.setAttribute("menu", "menu1");
+    	}else if(url.equals("/intro.jsp")){
+    		pageContext.setAttribute("menu", "menu2");
+    	}else if(url.startsWith("/dept/")){
+    		pageContext.setAttribute("menu", "menu3");
+    	}else if(url.startsWith("/login/")){
+    		pageContext.setAttribute("menu", "menu4");
+    	}
+    	%>
+    		<li class="${menu eq 'menu1'?'active':'' }">
+    			<a href="${pageContext.request.contextPath }/">home</a>
+    		</li>
+    		<li class="${menu eq 'menu2'?'active':'' }">
+    			<a href="${pageContext.request.contextPath }/intro">intro</a>
+    		</li>
+    		<li class="${menu eq 'menu3'?'active':'' }">
+    			<a href="${pageContext.request.contextPath }/dept/">dept</a>
+    		</li>
+    		<li class="${menu eq 'menu4'?'active':'' }">
+    			<a href="${pageContext.request.contextPath }/login/">login</a>
+    		</li>
+    	</ul>
+    </div>
+  </div>
+</nav>
+<div class="container">
+	<div class="col-md-12">
+	<!-- begin -->

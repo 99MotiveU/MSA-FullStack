@@ -1,0 +1,14 @@
+/ - index - get
+
+/intro - intro - get
+
+/dept/ - list - get
+
+/dept/add - add - get
+/dept/ - insert - post
+
+/dept/1111 - detail
+
+/dept/1111 - update - put
+
+/dept/1111 -de;ete - delete
