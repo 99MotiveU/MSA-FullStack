@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<h1>intro page</h1>
+		<p th:text="${msg}">hello world</p>
+		<ul>
+			<li th:each="imsg:${arr}" th:text="${imsg}">test</li>
+		</ul>
+		<table>
+			<tbody>
+				<tr th:each="imsg:${arr}">
+					<td th:text="${imsg}">test1</td>
+				</tr>
+				<tr th:text="${''}">
+					<td>test2</td>
+				</tr>
+				<tr th:text="${''}">
+					<td>test3</td>
+				</tr>
+				<tr th:text="${''}">
+					<td>test4</td>
+				</tr>
+				<tr th:text="${''}">
+					<td>test5</td>
+				</tr>
+				<tr th:text="${''}">
+					<td>test6</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
