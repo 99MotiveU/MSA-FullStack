@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head th:replace="~{layout/frame :: headFrag}">
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+	</head>
+	<body>
+		<nav th:replace="~{layout/frame :: navFrag}"/>
+		<div class="container">
+			<div class="row">
+				<h2 class="page-header">
+					<span th:if="${readonly ne null}">상세</span>
+					<span th:if="${readonly eq null}">수정</span>
+					페이지
+				</h2>
+				<form action="list.html" th:action="@{/dept/}+${bean.deptno}" method="post">
+					<input type="hidden" name="_method" value="put" th:if="${readonly eq null}"/>
+					<div class="form-group">
+						<label>deptno</label><input name="deptno" 
+						th:value="${bean.deptno}" value="0000" class="form-control" readonly/>
+					</div>
+					<div class="form-group">
+						<label>dname</label><input name="dname" 
+						th:value="${bean.dname}" value="dummy" class="form-control" th:attr="readonly=${readonly}"/>
+					</div>
+					<div class="form-group">
+						<label>location</label><input name="loc" 
+						th:value="${bean.loc}" value="dummy" class="form-control" th:attr="readonly=${readonly}"/>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-primary">수정</button>
+						<a href="list.html" th:if="${readonly ne null}" th:href="@{/dept/}+${bean.deptno}" class="btn btn-danger" role="button">삭제</a>
+						<button type="reset" th:if="${readonly eq null}" class="btn btn-default">취소</button>
+						<button onclick="history.back();" type="button" class="btn btn-default">뒤로</button>
+					</div>
+				</form>
+			</div>
+			<script type="text/javascript">
+				$('form .form-group>button+a').click(function(e){
+					e.preventDefault();
+					$.ajax({
+						url:$('form').attr('action')
+						,method:'delete'
+						,success:function(data){
+							location.href='./';
+						}
+						,error: function(xhr,msg,err){
+							alert('['+msg+']'+err);
+							console.log(err);
+						}
+					});
+				});
+			</script>
+			<div class="row" th:replace="~{layout/frame :: footerFrag}"></div>
+		</div>
+	</body>
+</html>
+
+
+
+
+
+
+
