@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link rel='stylesheet' th:href="@{/webjars/bootstrap/3.4.1/css/bootstrap.min.css}" href='/webjars/bootstrap/3.4.1/css/bootstrap.min.css'>
+		<script type="text/javascript" th:src="@{/webjars/jquery/1.12.4/jquery.min.js}" src="/webjars/jquery/1.12.4/jquery.min.js"></script>
+		<script type="text/javascript" th:src="@{/webjars/bootstrap/3.4.1/js/bootstrap.min.js}" src="/webjars/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	</head>
+	<body>
+		<nav th:replace="~{layout/frame :: navFrag}"></nav>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>intro page</h2>
+					<p th:text="${msg}"></p>
+				</div>
+			</div>
+			<div class="row" th:replace="~{layout/frame :: footerFrag}"></div>
+		</div>
+	</body>
+</html>
+
+
+
+
+
+
