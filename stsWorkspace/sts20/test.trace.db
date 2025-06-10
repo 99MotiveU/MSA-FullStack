@@ -1,0 +1,9 @@
+2025-06-10 11:12:21.723949+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DEPT" not found; SQL statement:
+drop table dept [42102-232]
+2025-06-10 11:23:16.994117+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DEPT" not found; SQL statement:
+drop table dept [42102-232]
+2025-06-10 11:45:30.569135+09:00 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "DEPT" not found; SQL statement:
+drop table dept [42102-232]
