@@ -1,0 +1,180 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <link rel="canonical" href="https://getbootstrap.com/docs/3.4/examples/starter-template/">
+
+    <title>Starter Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+    <style>
+        nav+.container{
+            margin-top: 80px;
+        }
+
+    </style>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var tb,tbody;
+      window.onload=function(){
+        tb=document.querySelector('table');
+        tbody=tb.querySelector('tbody');
+        fetch("/api/dept/")
+        .then(x => x.json())
+        .then(json=>{
+          json.forEach(ele=>{
+            var tr=`<tr>
+              <td><a href='${ele.deptno}'>${ele.deptno}</a></td>
+              <td><a href='${ele.deptno}'>${ele.dname}</a></td>
+              <td><a href='${ele.deptno}'>${ele.loc}</a></td>
+            </tr>`;
+            tbody.innerHTML+=tr;
+            tbody.querySelectorAll('a').forEach(ele=>{
+              ele.onclick=e=>{
+                e.preventDefault();
+                const deptno=ele.href.split('/dept/')[1];
+                fetch(`/api/dept/${deptno}`)
+                .then(e=>e.json())
+                .then(json=>{
+                  console.log(json);
+                  $('#myModal input').eq(0).val(json.deptno);
+                  $('#myModal input').eq(1).val(json.dname);
+                  $('#myModal input').eq(2).val(json.loc);
+                  //$('#myModal').modal({show:true});
+                  $('#myModal').modal('show');
+                  document.querySelector('.modal-footer .btn-danger').onclick=e=>{
+                    fetch(`/api/dept/${json.deptno}`,{
+                      method:'delete'
+                    }).then(e=>e).then(result=>{
+                      if(result.ok)
+                        location.reload();
+                      else{
+                         $('#myModal').modal('hide');
+                          alert(result.status);
+                      }
+                    });
+                  };
+                  document.querySelector('.modal-footer button').onclick=e=>{
+                    document.querySelector('#dname').removeAttribute('readonly');
+                    document.querySelector('#loc').removeAttribute('readonly');
+                    document.querySelector('.modal-footer button').onclick=e=>{
+                      fetch(`/api/dept/${json.deptno}`,{
+                        method:"PUT",
+                        headers: {
+                          "Content-Type": "application/json",
+                          // 'Content-Type': 'application/x-www-form-urlencoded',
+                        },
+                        body:JSON.stringify({
+                          deptno:json.deptno,
+                          dname:document.querySelector('#dname').value,
+                          loc:document.querySelector('#loc').value
+                        })
+                      }).then(e=>e).then(result=>{
+                        if(result.ok)
+                          location.reload();
+                        else{
+                          $('#myModal').modal('hide');
+                          alert(result.status);
+                        }
+                      });
+                    };
+                  };
+                });
+              };
+            });
+          });
+        });
+      };
+    </script>
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/index.html">IT여성기업인협회</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li><a href="/index.html">Home</a></li>
+            <li class="active"><a href="/dept/list.html">Dept</a></li>
+            <li><a href="/login.html">Login</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="jumbotron">
+        <h1>Hello, world!</h1>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>deptno</th>
+            <th>dname</th>
+            <th>loc</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+      </table>
+      <p><a href="add.html" class="btn btn-primary btn-block" role="button">입력</a></p>
+    </div><!-- /.container -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        <form class="form-horizontal">
+          <input type="hidden" name="deptno" value="0">
+          <div class="form-group">
+            <label for="dname" class="col-sm-2 control-label">dname</label>
+            <div class="col-sm-10">
+              <input readonly class="form-control" name="dname" id="dname" placeholder="dname">
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="loc" class="col-sm-2 control-label">location</label>
+            <div class="col-sm-10">
+              <input readonly class="form-control" name="loc" id="loc" placeholder="location">
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">수정</button>
+        <button type="button" class="btn btn-danger">삭제</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+      </div>
+    </div>
+  </div>
+</div>    
+  </body>
+</html>
