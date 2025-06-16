@@ -1,8 +1,8 @@
 # 📚 MSA 풀스택 개발자 양성과정: 학습 기술 스택
 
-이 저장소는 MSA 풀스택 개발자 양성과정을 통해 습득한 기술들을 정리하고 실습 코드를 관리하는 공간입니다.
+이 저장소는 Java기반 MSA 풀스택 개발자 양성과정을 통해 습득한 기술들을 정리하고 실습 코드를 관리하는 공간입니다.
 
-> 프로젝트에 대한 상세 내용은 추후 업데이트될 예정입니다.
+> 프로젝트에 대한 내용은 추후 업데이트될 예정입니다.
 
 ---
 
@@ -12,6 +12,7 @@
 <p>
   <img src="https://img.shields.io/badge/Java_17-007396?style=for-the-badge&logo=java&logoColor=white" />
   <img src="https://img.shields.io/badge/Java_8-007396?style=for-the-badge&logo=java&logoColor=white" />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" />
 </p>
 
 ### Backend Frameworks & Libraries
@@ -21,6 +22,7 @@
   <img src="https://img.shields.io/badge/JPA-6DB33F?style=for-the-badge" />
   <img src="https://img.shields.io/badge/MyBatis-000000?style=for-the-badge&logo=mybatis&logoColor=white" />
   <img src="https://img.shields.io/badge/IBatis-black?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" />
 </p>
 
 ### Databases
@@ -39,7 +41,6 @@
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
   <img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white" />
   <img src="https://img.shields.io/badge/JSP-orange?style=for-the-badge" />
-  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white" />
   <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
 </p>
 
