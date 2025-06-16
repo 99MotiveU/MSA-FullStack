@@ -22,6 +22,7 @@
   <img src="https://img.shields.io/badge/JPA-6DB33F?style=for-the-badge" />
   <img src="https://img.shields.io/badge/MyBatis-000000?style=for-the-badge&logo=mybatis&logoColor=white" />
   <img src="https://img.shields.io/badge/IBatis-black?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Thymeleaf-005F0F?style=for-the-badge&logo=thymeleaf&logoColor=white" />
   <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" />
 </p>
 
@@ -41,6 +42,7 @@
   <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
   <img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white" />
   <img src="https://img.shields.io/badge/JSP-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/EJS-brown?style=for-the-badge" />
   <img src="https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
 </p>
 
