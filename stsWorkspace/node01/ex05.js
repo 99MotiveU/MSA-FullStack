@@ -1,0 +1,11 @@
+const obj = {k1:'v1',k2:'v2',k3:'v3',k4:'v4'};
+console.log(obj['k1']);
+console.log(obj.k2);
+// const k1 = obj.k1;
+// const k2 = obj.k2;
+// const k3 = obj.k3;
+// const k4 = obj.k4;
+// const {k1,k2,k3,k4}=obj;
+// console.log(k1,k2,k3,k4);
+const{k1,k3}=obj;
+console.log(k1,k3);
