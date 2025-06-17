@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Document</title>
+</head>
+<body>
+<div>
+    <a href="/">home</a>
+    <a href="/dept/">dept</a>
+    <a href="/login/">login</a>
+</div>    
+<h1>입력 페이지</h1>
+<form action="./" method="post">
+    <div>
+        <label>deptno</label><input name="deptno"/>
+    </div>
+    <div>
+        <label>dname</label><input name="dname"/>
+    </div>
+    <div>
+        <label>location</label><input name="loc"/>
+    </div>
+    <div>
+        <button>입력</button>
+        <button type="reset">취소</button>
+        <button type="button" onclick="history.back();">뒤로</button>
+    </div>
+</form>
+</body>
+</html>

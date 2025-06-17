@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Document</title>
+</head>
+<body>
+<div>
+    <a href="/">home</a>
+    <a href="/dept/">dept</a>
+    <a href="/login/">login</a>
+</div>    
+<h1>상세 페이지 </h1>
+<form action="./" method="post">
+    <div>
+        <label>deptno</label><input name="deptno" value="<%=bean.deptno %>"/>
+    </div>
+    <div>
+        <label>dname</label><input name="dname" value="<%=bean.dname %>"/>
+    </div>
+    <div>
+        <label>location</label><input name="loc" value="<%=bean.loc %>"/>
+    </div>
+    <div>
+        <button type="button">수정</button>
+        <button type="button">삭제</button>
+        <button type="reset">취소</button>
+        <button type="button" onclick="history.back();">뒤로</button>
+    </div>
+</form>
+<script type="text/javascript">
+    document.querySelectorAll('input').forEach(ele=>ele.setAttribute('readonly','readonly'));
+    document.querySelector('form button+button').onclick=e=>{
+        fetch('./<%=bean.deptno %>',{
+                method: "DELETE",
+                headers: {
+                "Content-Type": "application/json",
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+                }
+            }).then(e=>location.href=e.ok?'./':'./<%=bean.deptno %>');
+    };
+    document.querySelector('form button').onclick=e=>{
+        if(document.querySelector('h1').innerHTML.startsWith('상세')){
+            document.querySelectorAll('input').forEach((ele,idx)=>{
+                if(idx!=0) ele.removeAttribute('readonly');
+            });
+            document.querySelector('h1').innerHTML='수정 페이지';
+        }else{
+            fetch('./<%=bean.deptno %>',{
+                method: "PUT",
+                headers: {
+                "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    deptno:<%=bean.deptno %>,
+                    dname:document.querySelectorAll("input")[1].value,
+                    loc:document.querySelectorAll("input")[2].value
+                })
+            }).then(e=>location.href=e.ok?'./':'./<%=bean.deptno %>');
+        }
+    };
+</script>
+</body>
+</html>

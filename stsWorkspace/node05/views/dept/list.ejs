@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <title>Document</title>
+</head>
+<body>
+<div>
+    <a href="/">home</a>
+    <a href="/dept/">dept</a>
+    <a href="/login/">login</a>
+</div>
+    <h1>dept list</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>deptno</th>
+                <th>dname</th>
+                <th>location</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% arr.forEach(ele=>{ %>
+            <tr>
+                <td><a href="<%=ele.deptno%>"><%=ele.deptno%></a></td>
+                <td><a href="<%=ele.deptno%>"><%=ele.dname%></a></td>
+                <td><a href="<%=ele.deptno%>"><%=ele.loc%></a></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+    <p><a href="./add">입력</a></p>
+</body>
+</html>

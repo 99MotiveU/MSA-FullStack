@@ -1,0 +1,28 @@
+services:
+  node05:
+    image: node05
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      NODE_ENV: production
+      db_url: db
+    ports:
+      - 3000:3000
+    networks:
+      - net02
+  
+  db:
+    image: mysql:lts
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: xe
+    ports:
+      - 3306:3306
+    networks:
+      - net02
+
+networks:
+  net02:
+    driver: bridge
