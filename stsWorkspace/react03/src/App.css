@@ -1,0 +1,9 @@
+nav{
+  background-color: red;
+}
+nav>a{
+  color: white;
+  margin: 10px;
+  text-decoration: none;
+  font-weight: bold;
+}
