@@ -1,0 +1,50 @@
+services:
+  sts34:
+    image: sts34
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:8080
+    networks:
+      - net03
+
+  db:
+    restart: always
+    image: mysql:lts
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql
+      - MYSQL_DATABASE=xe
+      - MYSQL_USER=scott
+      - MYSQL_PASSWORD=tiger
+    # volumes:
+    #   - ./dbdata:/var/lib/mysql
+    networks:
+      - net03
+
+
+  react04:
+    image: react04
+    environment:
+      NODE_ENV: production
+    ports:
+      - 3000:3000
+    networks:
+      - net03
+  ngproxy:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80' # Public HTTP Port
+      - '443:443' # Public HTTPS Port
+      - '81:81' # Admin Web Port
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    networks:
+      - net03
+networks:
+  net03:
+    driver: bridge

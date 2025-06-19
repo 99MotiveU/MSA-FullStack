@@ -1,0 +1,1 @@
+2025/06/19 09:07:20 [error] 205#205: *34 connect() failed (111: Connection refused) while connecting to upstream, client: 10.89.3.1, server: localhost, request: "GET /api/ HTTP/1.1", upstream: "http://127.0.0.1:8080/api/", host: "localhost"

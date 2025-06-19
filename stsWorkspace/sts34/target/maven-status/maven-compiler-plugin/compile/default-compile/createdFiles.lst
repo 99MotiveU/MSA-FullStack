@@ -1,0 +1,8 @@
+com\sts\sts34\model\entity\Dept.class
+com\sts\sts34\service\ApiService.class
+com\sts\sts34\model\DeptRepo.class
+com\sts\sts34\model\DeptVo$DeptVoBuilder.class
+com\sts\sts34\model\entity\Dept$DeptBuilder.class
+com\sts\sts34\Sts34Application.class
+com\sts\sts34\controller\ApiController.class
+com\sts\sts34\model\DeptVo.class
