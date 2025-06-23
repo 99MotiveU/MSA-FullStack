@@ -1,0 +1,13 @@
+.active {
+  color: red;
+}
+nav>a{
+  color: black;
+  font-size: 1.5em;
+  text-decoration: none;
+  margin-left: 20px;
+}
+nav{
+  border-bottom: 1px solid gray;
+  margin-bottom: 10px;
+}
