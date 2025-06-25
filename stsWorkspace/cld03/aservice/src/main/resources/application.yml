@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: aservice
+
+#######
+resilience4j:
+  circuitbreaker:
+    instances:
+      dept:
+        baseConfig: default
+#######
+    configs:
+      default:
+        registerHealthIndicator: true
+        slidingWindowSize: 2
+        failureRateThreshold: 50
+        sliding-window-type: count-based
+        slow-call-duration-threshold: 3s
+        slow-call-rate-threshold: 100
+        minimumNumberOfCalls: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 60s
+  retry:
+    instances:
+      dept:
+        baseConfig: default
+    configs:
+      default:
+        maxAttempts: 3
+        waitDuration: 500ms
+#				retryOnResultPredicate (기본값 : 없음)
+#				반환되는 결과에 따라서 retry를 할지 말지 결정하는 filter, true로 반환하면 retry하고 false로 반환하면 retry 하지 않습니다.
+#				retryExceptionPredicate (기본값 : 없음)
+#				exception에 따라서 retry 할지 말지 결정하는 filter, true로 반환하면 retry하고 false로 반환하면 retry 하지 않습니다.
+#				retryExceptions (기본값 : empty)
+#				실패로 기록하고 재시도하는 Exception 리스트입니다.
+#				ignoreExceptions (기본값 : empty)
+#				Exception이 발생해도 ignore하는 Exception 리스트입니다.
+#				failAfterMaxRetries (기본값 : false)
+#				모든 시도를 실패했을 때 MaxRetriesExceededException를 리턴할지 아니면 해당 Exception을 리턴할지 정하는 값입니다.
+      
