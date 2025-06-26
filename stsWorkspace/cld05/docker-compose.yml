@@ -1,0 +1,73 @@
+services:
+  eureka:
+    image: eureka:v1
+    build:
+      context: .
+      dockerfile: ./eureka/Dockerfile
+    networks:
+      - net01
+    
+  gateway:
+    image: gateway:v1
+    build:
+      context: .
+      dockerfile: ./gateway/Dockerfile
+    ports:
+      - 8080:8080
+    environment:
+      - zone=eureka  
+    depends_on:
+      - eureka
+    networks:
+      - net01
+  fe:
+    image: fe:latest
+    build:
+      context: .
+      dockerfile: ./fe/Dockerfile
+    depends_on:
+      - gateway
+    networks:
+      - net01
+  configserver:
+    image: configserver:v1
+    build:
+      context: .
+      dockerfile: ./config/Dockerfile
+    depends_on:
+      - gateway
+    networks:
+      - net01
+    
+  serviced:
+    image: serviced:v1
+    # build:
+    #   context: .
+    #   dockerfile: ./service_dept/Dockerfile
+    environment:
+      - configserver=configserver
+      - zone=eureka
+    command: ["sh", "-c", "sleep 60 && exec java -jar servicedept.jar"]
+    ports:
+      - 7001:7001
+    depends_on:
+      - configserver
+    networks:
+      - net01
+  controld:
+    image: controld:v1
+    # build:
+    #   context: .
+    #   dockerfile: ./control_dept/Dockerfile
+    environment:
+      - configserver=configserver
+      - zone=eureka
+    command: ["sh", "-c", "sleep 60 && exec java -jar controldept.jar"]
+    depends_on:
+      - configserver
+    networks:
+      - net01
+
+networks:
+  net01:
+    external: true
