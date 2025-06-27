@@ -1,0 +1,49 @@
+version: "3.3"
+
+services:
+  db_master:
+    image: mysql:latest
+    container_name: db_master
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mariadb_root_password
+    volumes:
+      - ./master/data:/var/lib/mysql
+      - ./master/config/:/etc/mysql/conf.d
+    ports:
+      - "33306:3306"
+    networks:
+      dock_net:
+        ipv4_address: 172.16.0.10
+    secrets:
+      - mariadb_root_password
+
+  db_slave:
+    image: mysql:latest
+    container_name: db_slave
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mariadb_root_password
+    volumes:
+      - ./slave/data:/var/lib/mysql
+      - ./slave/config/:/etc/mysql/conf.d
+    ports:
+      - "33307:3306"
+    networks:
+      dock_net:
+        ipv4_address: 172.16.0.11
+    secrets:
+      - mariadb_root_password
+    depends_on:
+      - db_master
+
+secrets:
+  mariadb_root_password:
+    file: ./mariadb_root_password.txt
+
+networks:
+  dock_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.16.0.0/16
