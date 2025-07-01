@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: gateway
+
+  cloud:
+    gateway:
+      routes:
+      - id: api
+        uri: http://localhost:7070
+        order: 1
+        predicates:
+        - Path=/user/**
+      - id: api
+        uri: http://localhost:7070
+        order: 2
+        predicates:
+        - Path=/api/**
+        filters:
+        - name: BeforeGatewayFilter
+      - id: fe
+        uri: http://localhost:3000
+        order: 3
+        predicates:
+        - Path=/**
+          
