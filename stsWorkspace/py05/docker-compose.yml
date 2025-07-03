@@ -1,0 +1,36 @@
+services:
+  py05:
+    restart: always
+    depends_on:
+      - mysql8
+    image: py05
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8000:8000
+    environment:
+      DB_USER: scott
+      DB_PASSWD: tiger
+      DB_HOST: mysql8
+      DB_PORT: 3306
+      DB_NAME: xe
+    networks:
+      - net02
+  mysql8:
+    image: mysql:lts
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: xe
+      MYSQL_USER: scott
+      MYSQL_PASSWORD: tiger
+    # volumes:
+    #   - ./db:/var/lib/mysql:rw
+    networks:
+      - net02
+
+networks:
+  net02:
+    driver: bridge
