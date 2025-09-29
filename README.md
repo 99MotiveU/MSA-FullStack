@@ -3,7 +3,7 @@
 이 저장소는 Java기반 MSA 풀스택 개발자 양성과정을 통해 습득한 기술들을 정리하고 실습 코드를 관리하는 공간입니다.
 
 프로젝트는 다른 repo에 존재합니다.
-|  [1차](https://github.com/99MotiveU/MafaiG)  |  [2차](https://github.com/99MotiveU/ExitLog)  |  [3차](https://github.com/99MotiveU/Better-In-Focust-BIF) |
+|  [1차](https://github.com/99MotiveU/MafiaG)  |  [2차](https://github.com/99MotiveU/ExitLog)  |  [3차](https://github.com/99MotiveU/Better-In-Focust-BIF) |
 ---
 
 ## 🛠️ 기술 스택 (Tech Stack)
