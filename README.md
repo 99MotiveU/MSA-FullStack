@@ -4,8 +4,8 @@
 
 프로젝트는 다른 repo에 존재합니다.
 - [MafiaG : AI 추론 소셜 게임](https://github.com/99MotiveU/MafiaG)  
-- [ExitLog : 플랫폼 ](https://github.com/99MotiveU/ExitLog)
-- [BIF : 경계선 지능인을 위한 보조 웹앱](https://github.com/99MotiveU/Better-In-Focust-BIF)
+- [ExitLog : 퇴사, 이직, 구직자들이 모여 기업 경험을 공유하는 커뮤니티 플랫폼](https://github.com/99MotiveU/ExitLog)
+- [BIF : 경계선 지능인 보조 웹앱](https://github.com/99MotiveU/Better-In-Focust-BIF)
 
 ## 🛠️ 기술 스택 (Tech Stack)
 
